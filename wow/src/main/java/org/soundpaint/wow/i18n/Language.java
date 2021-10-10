@@ -32,7 +32,7 @@ public enum Language
   public static Language fromKey(final String key)
   {
     return Arrays.stream(Language.values()).
-      filter(lang -> lang.key == key).findFirst().get();
+      filter(language -> language.key.equals(key)).findFirst().get();
   }
 }
 

@@ -6,7 +6,6 @@ import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -35,7 +34,6 @@ import javax.xml.transform.stream.StreamSource;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.soundpaint.wow.log.RuntimeLogger;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.MultipartConfig;
@@ -189,21 +187,19 @@ public class RequestDispatcher extends HttpServlet
                            RequestDispatcher.class.getClassLoader());
       logger.info("classLoader=" + classLoader);
       final Class<?> clazz = Class.forName(templateBaseName, true, classLoader);
-      logger.info("clazz=" + clazz);
-      if (!Resource.class.isAssignableFrom(clazz)) {
-        return null;
-      }
-      logger.info("clazz is assignable");
-      return (Class<? extends Resource>)clazz;
-    } catch (final MalformedURLException | ClassNotFoundException e) {
+      return clazz.asSubclass(Resource.class);
+    } catch (final MalformedURLException | ClassNotFoundException |
+                   ClassCastException e)
+    {
       // class not found or not ready for execution
-      logger.error("exception: " + e);
+      logger.error("failed loading class for template " +
+                   templateBaseName + ": " + e);
       return null;
     }
   }
 
   private static boolean
-    tryServeExecutableResource(final ResourceContext resourceContext)
+    tryServeCompiledTemplate(final ResourceContext resourceContext)
     throws ServletException, IOException
   {
     final HttpServletRequest request = resourceContext.getRequest();
@@ -218,8 +214,6 @@ public class RequestDispatcher extends HttpServlet
     final String templateBaseName =
       stripOffLeadingSlash(request.getPathInfo());
     logger.debug("templateBaseName=" + templateBaseName);
-
-    String renderedPage;
     final HttpServletResponse response = resourceContext.getResponse();
     try {
       final Class<? extends Resource> clazz =
@@ -231,12 +225,15 @@ public class RequestDispatcher extends HttpServlet
         return false;
       }
       logger.debug("serving page from class " + clazz);
-      final Method renderPageMethod =
-        clazz.getMethod("renderPage", ResourceContext.class);
-      renderedPage = (String)renderPageMethod.invoke(null, resourceContext);
+      final Constructor<? extends Resource> constructor =
+        clazz.getConstructor(ResourceContext.class);
+      final Resource resource = constructor.newInstance(resourceContext);
+      final ResponseBody responseBody = resource.serve();
+      responseBody.write();
+      responseBody.flush();
     } catch (IllegalAccessException | IllegalArgumentException |
-             InvocationTargetException | NoSuchMethodException |
-             SecurityException e)
+             InvocationTargetException | InstantiationException |
+             NoSuchMethodException | SecurityException e)
     {
       response.setStatus(HttpServletResponse.SC_EXPECTATION_FAILED);
       final StringWriter sw = new StringWriter();
@@ -244,23 +241,7 @@ public class RequestDispatcher extends HttpServlet
       e.printStackTrace(pw);
       pw.flush();
       logger.error("serving page failed: " + sw);
-      return true;
     }
-    final String content = renderedPage;
-    response.setStatus(HttpServletResponse.SC_OK);
-    response.setContentType("text/html; charset=UTF-8");
-    response.setHeader("Connection", "close");
-
-    /*
-     * TODO: Can we compute the UTF-8 length of the large string more
-     * efficiently rather than copying all data into a byte array?
-     */
-    final byte[] utf8Bytes = content.getBytes("UTF-8");
-    response.setContentLength(utf8Bytes.length);
-
-    final PrintWriter out = resourceContext.getWriter();
-    out.print(content);
-    out.flush();
     return true;
   }
 
@@ -281,7 +262,14 @@ public class RequestDispatcher extends HttpServlet
     return resourceContext.getSession().getI18N();
   }
 
-  private static Resource createResource(final ResourceContext resourceContext)
+  /**
+   * Other resources are resources that have not been created from a template.
+   * Typical examples of other resource are reports in PDF or any other
+   * binary format that are generated on the fly.
+   * @param resourceContext Context of this resource.
+   * @return The resource instance that will serve the response.
+   */
+  private static Resource createOtherResource(final ResourceContext resourceContext)
   {
     // Get full Resource class name.
     final HttpServletRequest request = resourceContext.getRequest();
@@ -310,7 +298,7 @@ public class RequestDispatcher extends HttpServlet
       logger.debug("creating instance for class " + clazz.getName());
       final Constructor<? extends Resource> constructor =
         clazz.getConstructor();
-      return constructor.newInstance();
+      return constructor.newInstance(resourceContext);
     } catch (final NoSuchMethodException e) {
       // should never occur since every class has a default
       // constructor
@@ -376,14 +364,14 @@ public class RequestDispatcher extends HttpServlet
     ResponseBody responseBody;
     // Collect output in ResponseBody object.
     try {
-      if (tryServeExecutableResource(resourceContext)) {
+      if (tryServeCompiledTemplate(resourceContext)) {
         return; // page served
       }
 
-      // Initialize resource.
+      // other (binary) resource
       Resource resource;
       try {
-        resource = createResource(resourceContext);
+        resource = createOtherResource(resourceContext);
       } catch (final InternalException e) {
         logger.error(e.toString(), e);
         final URI redirectURI = new URI("/InternalError"); // TODO
@@ -398,7 +386,6 @@ public class RequestDispatcher extends HttpServlet
 
       if (resource != null) {
         try {
-          resource.init(resourceContext);
           responseBody = resource.serve();
         } catch (final SecurityException e) {
           logger.error(e.toString(), e);

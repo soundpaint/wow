@@ -2,6 +2,7 @@ package org.soundpaint.wow;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 
 import org.apache.logging.log4j.LogManager;
@@ -14,10 +15,18 @@ public abstract class XHTMLPage extends Resource
 {
   private static final Logger logger = LogManager.getLogger(XHTMLPage.class);
   protected static final String XSD_DATETIME_FORMAT = "yyyy-MM-dd HH:mm:ss";
+  protected static final DateTimeFormatter XSD_DATETIME_FORMATTER =
+    DateTimeFormatter.ofPattern(XSD_DATETIME_FORMAT);
 
   private int activeLevel1Index;
   private int activeLevel2Index;
   private int activeLevel3Index;
+
+  protected XHTMLPage(final ResourceContext context)
+  {
+    super(context);
+    initMenuIndices();
+  }
 
   private void initMenuIndices()
   {
@@ -58,17 +67,11 @@ public abstract class XHTMLPage extends Resource
      */
   }
 
-  final public void init(final ResourceContext resourceContext)
-    throws IOException
-  {
-    super.init(resourceContext);
-    initMenuIndices();
-  }
-
   @Override
-  protected ResponseBody createResponseBodyForResponse(
-    final HttpServletResponse response) throws IOException, ServletException
+  protected ResponseBody createResponseBody()
+    throws IOException, ServletException
   {
+    final HttpServletResponse response = getContext().getResponse();
     final String xhtml = generateXHTML();
     final ResponseBody responseBody = new ResponseBody() {
       private final PrintWriter out;
@@ -85,16 +88,28 @@ public abstract class XHTMLPage extends Resource
       }
     };
     response.setContentType("application/xhtml+xml; charset=UTF-8");
+    response.setStatus(HttpServletResponse.SC_OK);
+    response.setContentType("text/html; charset=UTF-8");
+
+    /*
+     * TODO: Can we compute the UTF-8 length of the large string more
+     * efficiently rather than copying all data into a byte array?
+     */
+    final byte[] utf8Bytes = xhtml.getBytes("UTF-8");
+    response.setContentLength(utf8Bytes.length);
+
+    // response.setHeader("Connection", "close");
     return responseBody;
   }
 
   @Override
-  protected final ResponseBody serveActions(final ResourceContext context)
+  protected final ResponseBody serveActions()
     throws IOException, ServletException
   {
+    final ResourceContext context = getContext();
     context.setAllowRedirect(true);
     logger.debug("serving actions"); // DEBUG
-    serveActions();
+    servePageActions();
     context.setAllowRedirect(false);
     if (context.isRedirected()) {
       logger.debug("redirect => abort handling"); // DEBUG
@@ -124,7 +139,7 @@ public abstract class XHTMLPage extends Resource
    * 
    * The default implementation of this method does nothing.
    */
-  protected void serveActions() throws ServletException, IOException
+  protected void servePageActions() throws ServletException, IOException
   {
     // default implementation does nothing
   }

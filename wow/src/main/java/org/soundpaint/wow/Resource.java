@@ -169,9 +169,14 @@ public abstract class Resource
     return RuntimeConfig.getDefaultInstance().getShortcutIconURI().toString();
   }
 
-  private ResourceContext context;
+  private final ResourceContext context;
 
-  protected Resource() {}
+  private Resource() { throw new UnsupportedOperationException(); }
+
+  protected Resource(final ResourceContext context)
+  {
+    this.context = context;
+  }
 
   protected ResourceContext getContext()
   {
@@ -179,17 +184,6 @@ public abstract class Resource
   }
 
   protected abstract String getDefaultNavigationPath();
-
-  /**
-   * Prepares this resource for use with the specified resource context. This
-   * method is initially once called.
-   * 
-   */
-  public void init(final ResourceContext resourceContext)
-    throws IOException
-  {
-    this.context = resourceContext;
-  }
 
   private static void parseParameter(
     final Map<String, ParameterParser> parameterParsers,
@@ -287,34 +281,36 @@ public abstract class Resource
     final HttpServletRequest request = getContext().getRequest();
     final String[] langValues = request.getParameterValues("lang");
     if (langValues != null) {
-      if (langValues.length != 1) { throw new InvalidURLException(
-          "invalid URL: multiple parameter \"lang\"", i18n); }
+      if (langValues.length != 1) {
+        throw new InvalidURLException("invalid URL: " +
+                                      "multiple parameter \"lang\"", i18n);
+      }
+      final String languageKey = langValues[0];
       final Language language;
       try {
-        language = Language.fromKey(langValues[0]);
+        logger.debug("selected language=" + languageKey);
+        language = Language.fromKey(languageKey);
       } catch (final IllegalArgumentException e) {
-        throw new InvalidURLException("invalid URL: unsupported language \""
-            + langValues[0] + "\"", i18n);
+        throw new InvalidURLException("invalid URL: unsupported language \"" +
+                                      languageKey + "\"", i18n);
       }
       i18n.setPreferredLanguage(language);
       i18n.setLocale(new Locale(language.getKey()));
     }
   }
 
-  protected abstract ResponseBody serveActions(final ResourceContext context)
+  protected abstract ResponseBody serveActions()
     throws IOException, ServletException;
 
-  protected abstract ResponseBody createResponseBodyForResponse(
-    final HttpServletResponse response)
+  protected abstract ResponseBody createResponseBody()
     throws IOException, InvalidURLException, ServletException;
 
   public final ResponseBody serve()
     throws ServletException, IOException, InvalidURLException
   {
+    logger.debug("using resource handler " + this.getClass());
+    logger.debug("parsing parameters");
     final ResourceContext context = getContext();
-    final HttpServletResponse response = context.getResponse();
-    logger.debug("using resource handler " + this.getClass()); // DEBUG
-    logger.debug("parsing parameters"); // DEBUG
     context.determineParameterEncoding();
     checkLanguageChangeRequest();
     if (!context.ignoreParameters()) {
@@ -324,11 +320,11 @@ public abstract class Resource
         throw new IOException("request contains a bad URL or POST parameter", e);
       }
     }
-    final ResponseBody actionResponse = serveActions(context);
+    final ResponseBody actionResponse = serveActions();
     if (actionResponse != null)
       return actionResponse;
-    logger.debug("generating XHTML page"); // DEBUG
-    final ResponseBody responseBody = createResponseBodyForResponse(response);
+    logger.debug("generating XHTML page");
+    final ResponseBody responseBody = createResponseBody();
     return responseBody;
   }
 

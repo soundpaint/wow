@@ -82,7 +82,6 @@ before compiling and running.
     <xsl:text>import java.io.PrintWriter;&nl;</xsl:text>
     <xsl:text>import java.io.StringWriter;&nl;</xsl:text>
     <xsl:text>import java.time.LocalDateTime;&nl;</xsl:text>
-    <xsl:text>import java.time.format.DateTimeFormatter;&nl;</xsl:text>
     <xsl:text>&nl;</xsl:text>
     <xsl:text>import jakarta.servlet.ServletException;&nl;</xsl:text>
     <xsl:text>&nl;</xsl:text>
@@ -100,18 +99,14 @@ before compiling and running.
     <xsl:text> *          Do not change this file, since it will eventually be&nl;</xsl:text>
     <xsl:text> *          overwritten.&nl;</xsl:text>
     <xsl:text> */&nl;</xsl:text>
-    <xsl:text>public abstract class </xsl:text>
+    <xsl:text>public class </xsl:text>
     <xsl:value-of select="$template-base-name"/>
     <xsl:text> extends XHTMLPage&nl;</xsl:text>
     <xsl:text>{&nl;</xsl:text>
-    <xsl:text>  private static final String XSD_DATETIME_FORMAT =&nl;</xsl:text>
-    <xsl:text>    "yyyy-MM-dd HH:mm:ss";&nl;</xsl:text>
     <xsl:text>  private static final String COMPILE_XSD_DATETIME =&nl;</xsl:text>
     <xsl:text>    "</xsl:text>
     <xsl:value-of select="$compile-datetime" />
     <xsl:text>";&nl;</xsl:text>
-    <xsl:text>  private static final DateTimeFormatter XSD_DATETIME_FORMATTER =&nl;</xsl:text>
-    <xsl:text>    DateTimeFormatter.ofPattern(XSD_DATETIME_FORMAT);&nl;</xsl:text>
     <xsl:text>  private static final LocalDateTime COMPILE_DATETIME =&nl;</xsl:text>
     <xsl:text>    LocalDateTime.parse(COMPILE_XSD_DATETIME, XSD_DATETIME_FORMATTER);&nl;</xsl:text>
     <xsl:text>&nl;</xsl:text>
@@ -120,7 +115,31 @@ before compiling and running.
     <xsl:text>    return COMPILE_DATETIME;&nl;</xsl:text>
     <xsl:text>  }&nl;</xsl:text>
     <xsl:text>&nl;</xsl:text>
-    <xsl:text>  public static void renderPage(final PrintWriter out)&nl;</xsl:text>
+    <xsl:text>  public &nl;</xsl:text>
+    <xsl:value-of select="$template-base-name"/>
+    <xsl:text>(final ResourceContext context)&nl;</xsl:text>
+    <xsl:text>  {&nl;</xsl:text>
+    <xsl:text>    super(context);&nl;</xsl:text>
+    <xsl:text>  }&nl;</xsl:text>
+    <xsl:text>&nl;</xsl:text>
+    <xsl:text>  @Override&nl;</xsl:text>
+    <xsl:text>  public String getDefaultNavigationPath()&nl;</xsl:text>
+    <xsl:text>  {&nl;</xsl:text>
+    <xsl:text>    // TODO&nl;</xsl:text>
+    <xsl:text>    return "</xsl:text>
+    <xsl:value-of select="$package-path"/>
+    <xsl:text>/</xsl:text>
+    <xsl:value-of select="$template-base-name"/>
+    <xsl:text>";&nl;</xsl:text>
+    <xsl:text>  }&nl;</xsl:text>
+    <xsl:text>&nl;</xsl:text>
+    <xsl:text>  @Override&nl;</xsl:text>
+    <xsl:text>  public void parseParameters()&nl;</xsl:text>
+    <xsl:text>  {&nl;</xsl:text>
+    <xsl:text>    // TODO&nl;</xsl:text>
+    <xsl:text>  }&nl;</xsl:text>
+    <xsl:text>&nl;</xsl:text>
+    <xsl:text>  public void generateXHTML(final PrintWriter out)&nl;</xsl:text>
     <xsl:text>  {&nl;</xsl:text>
     <xsl:text>    out.print("&lt;!DOCTYPE html>\n");&nl;</xsl:text>
     <!-- &lt;xsl:text>    out.print("&lt;html xmlns=\"http://www.w3.org/1999/xhtml\" lang=\"en\">");&amp;nl;&lt;/xsl:text>-->
@@ -129,22 +148,21 @@ before compiling and running.
     <xsl:text>    out.print("&lt;/html>\n");&nl;</xsl:text>
     <xsl:text>  }&nl;</xsl:text>
     <xsl:text>&nl;</xsl:text>
-    <xsl:text>  public static String renderPage(final ResourceContext context)&nl;</xsl:text>
+    <xsl:text>  @Override&nl;</xsl:text>
+    <xsl:text>  public String generateXHTML()&nl;</xsl:text>
     <xsl:text>  {&nl;</xsl:text>
     <xsl:text>    final StringWriter sw = new StringWriter();&nl;</xsl:text>
     <xsl:text>    final PrintWriter pw = new PrintWriter(sw);&nl;</xsl:text>
-    <xsl:text>    renderPage(pw);&nl;</xsl:text>
+    <xsl:text>    generateXHTML(pw);&nl;</xsl:text>
     <xsl:text>    pw.flush();&nl;</xsl:text>
     <xsl:text>    return sw.toString();&nl;</xsl:text>
     <xsl:text>  }&nl;</xsl:text>
     <xsl:text>&nl;</xsl:text>
     <xsl:text>  public String toString()&nl;</xsl:text>
     <xsl:text>  {&nl;</xsl:text>
-    <xsl:text>    final StringWriter sw = new StringWriter();&nl;</xsl:text>
-    <xsl:text>    final PrintWriter pw = new PrintWriter(sw);&nl;</xsl:text>
-    <xsl:text>    renderPage(pw);&nl;</xsl:text>
-    <xsl:text>    pw.flush();&nl;</xsl:text>
-    <xsl:text>    return sw.toString();&nl;</xsl:text>
+    <xsl:text>    return "wow servlet for page </xsl:text>
+    <xsl:value-of select="$template-base-name"/>
+    <xsl:text>";&nl;</xsl:text>
     <xsl:text>  }&nl;</xsl:text>
     <xsl:text>}&nl;</xsl:text>
     <xsl:text>&nl;</xsl:text>
