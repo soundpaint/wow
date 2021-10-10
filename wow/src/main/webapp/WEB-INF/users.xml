@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  User account info is stored in the database that backs the system.
+  It is managed by some user (typically, the "admin" user)
+  that has access to the pages and functions for managing roles.
+  For bootstrapping purposes, i.e. when starting with an
+  empty database, there is not yet any user for managing roles.
+  Therefore, this configuration file defines a minimal set
+  of users (usually, just the "admin" user and a guest user for
+  the process of login).
+-->
+<users>
+  <user id="admin" start-page="Index">
+    <!-- Run the java tool org.poly.security.MD5Hash to compute the
+         hexadecimal representation of a MD5 hash for a given
+         password.
+
+         N.B.: Be careful not to include a trailing new line character
+         "\n" when creating the MD5 hash, as the additional character
+         results in a completely different hash value.  To avoid any
+         trailing new line character, you may use the following
+         command in most unix shells:
+         
+           echo -n "my-password" | md5sum
+    -->
+    <password coding="md5" salt="">21232f297a57a5a743894a0e4a801fc3</password>
+
+    <!-- The "admin" role gives the "admin" user full administration
+         rights. -->
+    <role ref="admin" />
+
+    <!-- A "guest" role is useful if the administrator wants to check
+         how a web page appears to a member who has no administration
+         rights. -->
+    <role ref="guest" />
+  </user>
+  <user id="guest" start-page="Index">
+    <password coding="plain">guest</password>
+    <role ref="guest" />
+  </user>
+</users>
+<!--
+  Local Variables:
+    coding:utf-8
+    mode:sgml
+    mode:nXML
+  End:
+-->

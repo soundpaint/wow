@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Developer's point of view atomic privileges and contexts.  These
+     definitions are customer independent. -->
+<developer-security-features>
+
+  <privilege-set id="editMember">
+    <privilege ref="CRUD_createMember" />
+    <privilege ref="CRUD_readMember" />
+    <privilege ref="CRUD_updateMember" />
+    <privilege ref="CRUD_deleteMember" />
+  </privilege-set>
+
+  <!-- PRIVILEGES - - - A privilege is the atomic unit of operation
+       right management from the developer's point of view.  It refers
+       to a specific database table, but does not distinguish between
+       specific records within that table.  It is strongly recommended
+       for a web project to reference a privilege at most once and
+       only on a single web page.  Otherwise, the XHTML-to-Java
+       compiler will emit a warning (TODO) for the following reason.
+       If a customer thinks that there is no difference between two or
+       more of these privileges (e.g. updating and deleting some data
+       record of specific table), you - as a developer - still should
+       use different atomic privileges, but join them to a single
+       privilege set as desired by the customer (see the
+       "privilege-sets.xml" configuration file).  This way, if a
+       different customer feels that a different set of the
+       develeoper's point of view privileges forms a single customer
+       point of view privilege, you simply may create a different
+       privilege set that satisfies that customer.
+       -->
+  <privileges>
+    <crud-operation id="CRUD_createMember" op="create" table="User" />
+    <crud-operation id="CRUD_readMember" op="read" table="User" />
+    <crud-operation id="CRUD_updateMember" op="update" table="User" />
+    <crud-operation id="CRUD_deleteMember" op="delete" table="User" />
+  </privileges>
+</developer-security-features>
+
+<!--
+    Local Variables:
+      coding:utf-8
+      mode:sgml
+      mode:nXML
+    End:
+-->

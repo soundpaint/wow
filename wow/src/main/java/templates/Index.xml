@@ -1,0 +1,61 @@
+<!DOCTYPE template>
+<wow:template xmlns="http://www.w3.org/1999/xhtml" lang="en"
+              xmlns:wow="https://www.soundpaint.org/wow">
+  <wow:meta>
+    <wow:description>landing page of wow website</wow:description>
+    <wow:keywords>index, main page, landing page</wow:keywords>
+    <wow:title>Welcome to Wow…</wow:title>
+  </wow:meta>
+  <wow:content>
+    <p><img src="../images/me.jpg"
+            alt="picture of me"
+            style="float:right;width:88px;height:102px;padding:10px"/></p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+    sed do eiusmod tempor incididunt ut labore et dolore magna
+    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+    ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
+    aute irure dolor in reprehenderit in voluptate velit esse
+    cillum dolore eu fugiat nulla pariatur. Excepteur sint
+    occaecat cupidatat non proident, sunt in culpa qui officia
+    deserunt mollit anim id est laborum.</p>
+    <p>Maecenas augue metus, venenatis ac est vitae, ultrices
+    congue leo. Morbi eu massa nisl. Duis quis dolor ac eros
+    ornare ultrices. Nulla facilisi. Pellentesque semper nulla et
+    tincidunt cursus. Vestibulum sit amet ante consequat, maximus
+    augue sed, lacinia turpis. Nulla pellentesque mi eu rutrum
+    faucibus. Cras mattis erat vitae porta tempus. Nullam sit amet
+    consectetur tellus. Suspendisse dictum ornare magna, vel
+    lacinia erat pharetra eget. Duis nec diam ornare, volutpat
+    risus ac, dictum nunc. Mauris tempus dolor at risus posuere,
+    sed porttitor metus posuere. Proin sit amet lacus eget mauris
+    finibus dapibus. In ac consequat libero, ac accumsan
+    dolor. Fusce vehicula purus dolor, semper mollis metus
+    sagittis tempor.</p>
+    <p>Sed commodo, dolor eu lacinia facilisis, enim quam
+    tincidunt sapien, sed fringilla purus elit sagittis ex. Sed
+    congue feugiat consequat. Quisque rhoncus lorem at eros
+    porttitor tristique ac et mi. Fusce vitae turpis nec quam
+    viverra ornare. Mauris diam erat, elementum nec commodo quis,
+    blandit ultrices ante. Proin eu neque eget felis malesuada
+    semper. Curabitur quis justo libero.</p>
+    <p>Nam elementum nibh eu accumsan pellentesque. Quisque
+    vestibulum libero nibh, in iaculis nulla dignissim
+    in. Suspendisse ac posuere leo. Proin nisl orci, ullamcorper
+    sed faucibus sed, rutrum ornare urna. Donec faucibus egestas
+    erat in gravida. Mauris vitae interdum odio, sed finibus
+    ligula. Vestibulum tincidunt eros at orci volutpat
+    facilisis. Curabitur id dui semper mi tincidunt vestibulum nec
+    a nibh. Nam non mi vulputate, rhoncus erat quis, consequat
+    neque. In hac habitasse platea dictumst. Nullam in euismod
+    erat. Proin eget purus efficitur erat aliquam accumsan. Duis
+    sit amet massa libero.</p>
+    <p>Lorem ipsum created with www.lipsum.com.  More to follow soon…</p>
+  </wow:content>
+</wow:template>
+<!--
+  Local Variables:
+  coding:utf-8
+  mode:sgml
+  mode:nXML
+  End:
+-->

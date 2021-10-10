@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config>
+  <!-- @TODO: Put compile time configuration into a separate file. -->
+
+  <!-- input file paths -->
+  <log4j-configuration file-path="log4j.properties" />
+  <i18n file-path="i18n.xml">
+    <language key="en">English</language>
+    <language key="de">Deutsch</language>
+    <!--
+    <language key="fr">Français</language>
+    <language key="es">Español</language>
+    <language key="it">Italiano</language>
+    <language key="ru">Русский</language>
+    <language key="pl">Polski</language>
+    <language key="ja">日本語</language>
+    <language key="pt">Português</language>
+    <language key="nl">Nederlands</language>
+    -->
+  </i18n>
+  <pages package-path="org.poly.pages" />
+  <binary-resources package-path="org.poly.pages" />
+  <db-access>
+    <db-vendor>MySQL</db-vendor>
+    <db-version>5.1</db-version>
+    <jdbc-path>jdbc:mysql://localhost/polyschema</jdbc-path>
+    <db-model-history file-path="db-model/db-model-history.xml" />
+  </db-access>
+  <developer-security-features file-path="developer-security-features.xml" />
+  <customer-security-features file-path="customer-security-features.xml" />
+  <roles-config file-path="roles.xml" />
+  <default-role ref="guest" />
+  <users-config file-path="users.xml" />
+  <user-props file-path="userProps.xml" />
+  <navigator dir-path="../../Build/output" />
+  <templates dir-path="templates" validate="true" />
+  <!-- out file paths -->
+  <classes dir-path="../../Build/output/src" />
+  <sql-scripts dir-path="../../Build/output/db-model/sql" />
+  <generated-templates dir-path="../../Build/output/templates" />
+
+  <!-- web root absolute path WITHOUT trailing slash -->
+  <web-root uri="/PolyWeb/pages/" />
+  <css uri="../css/poly.css" />
+  <shortcut-icon uri="../images/poly-logo_gelb-rot2.gif" />
+</config>
+<!--
+    Local Variables:
+      coding:utf-8
+      mode:sgml
+      mode:nXML
+    End:
+-->

@@ -1,0 +1,185 @@
+#main {
+  position: absolute;
+  left: 175px;
+  right: 0;
+  top: 0px;
+  padding-left: 10px;
+}
+
+#main h1 {
+  font-weight: 200;
+}
+
+html {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 1em;
+  line-height: 1.5;
+  color: #555;
+  background-color: #fff;
+}
+
+a {
+  color: #000;
+}
+
+#content a::before {
+  color: #8899a6;
+  content: "🔗";
+}
+
+#content figure a.figlink::before {
+  content: "";
+  padding-right: 0;
+  background-image: none;
+}
+
+#content a[href^="http:"]:before,
+#content a[href^="https:"]:before {
+  content: " ";
+  padding-right: 18px;
+  background-image: url("../../images/external-link.svg");
+  background-repeat: no-repeat;
+  background-position: 1px 1px;
+}
+
+.left-sidebar {
+  background-color: #ddd;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 175px;
+}
+
+.page-nav {
+  position: fixed;
+  top: 62px;
+  width: inherit;
+  clear: both;
+  display: inline-grid;
+  overflow: hidden;
+  padding-top:5px;
+}
+
+.page-nav div a,
+.page-nav div span {
+  text-decoration: none;
+  font-size: 0.9em;
+  color: #555;
+  float: none;
+  text-align: right;
+  padding: 6px 8px;
+  display: block;
+}
+
+.page-nav div a:hover {
+  background-color: #888;
+  color: black;
+}
+
+.page-nav div.active-nav span {
+  color: #fff;
+  background-color: #aaa;
+  cursor: default;
+}
+
+.page-nav div a:active {
+  background-color: #333;
+  color: white;
+}
+
+.lang-nav {
+  clear: both;
+  display: inline-grid;
+  overflow: hidden;
+  width: 100%;
+  padding-top: 2px;
+}
+
+.inactive-lang {
+  opacity: 0.5;
+}
+
+span.active-lang a {
+  text-decoration: none;
+}
+
+#header {
+  position: fixed;
+  top: 0;
+  left: 175px;
+  right: 0;
+  height: 2px;
+  background-image: linear-gradient(to left, #753a88, #ddd);
+  font-size: 0.7em;
+  text-align: right;
+  padding-right: 4px;
+}
+
+#sidebar-footer {
+  position: fixed;
+  bottom: 0;
+  width: 175px;
+  font-size: 0.7em;
+  color: #555;
+  padding-left: 2px;
+}
+
+div.branding-area {
+  position: fixed;
+  top: 0px;
+  font-family: Arial;
+  font-variant: small-caps;
+  padding-top: 2px;
+  padding-left: 2px;
+  padding-right: 5px;
+}
+
+table.field-list {
+  border: 0px;
+}
+
+figure {
+  width: 30%;
+  text-align: center;
+  text-indent: 0;
+  border: thin silver solid;
+  margin: 0.5em;
+  padding: 0.5em;
+}
+
+figcaption {
+  font-weight: bold;
+}
+
+figure img {
+  max-width: 100%;
+}
+
+div#main div#content ul li {
+  clear: both;
+}
+
+#main span.name {
+  font-variant: small-caps;
+}
+
+#main blockquote.light {
+  font-style: italic;
+  text-align: right;
+  padding-left: 20px;
+}
+
+#main blockquote.light p {
+  font-size: large;
+  color: #844;
+}
+
+#main blockquote.light footer {
+  font-size: small;
+  color: #888;
+}
+
+#main blockquote.light footer cite {
+  font-variant: small-caps;
+}

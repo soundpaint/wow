@@ -1,0 +1,39 @@
+<!DOCTYPE template>
+<wow:template xmlns="http://www.w3.org/1999/xhtml" lang="en"
+              xmlns:wow="https://www.soundpaint.org/wow">
+  <wow:meta>
+    <wow:description>user login</wow:description>
+    <wow:keywords>login, login page</wow:keywords>
+    <wow:title>Login</wow:title>
+  </wow:meta>
+  <wow:content>
+    <p>
+      <table class="field-list">
+        <tr>
+          <td><wow:i18n key="core.label.username"/></td>
+          <td><input name="username" type="text" /></td>
+        </tr>
+        <tr>
+          <td>Password:</td>
+          <td><input name="password" type="password" /></td>
+        </tr>
+      </table>
+    </p>
+    <!-- This "comment" will be \dropped. -->
+    <wow:code-comment>This "comment"
+will be \put into
+the Java source code.</wow:code-comment>
+    <wow:html-comment>This "comment" will be
+printed as \part of the created XHTML.</wow:html-comment>
+    <p>
+      <button type="button">Submit</button>
+    </p>
+  </wow:content>
+</wow:template>
+<!--
+  Local Variables:
+  coding:utf-8
+  mode:sgml
+  mode:nXML
+  End:
+-->

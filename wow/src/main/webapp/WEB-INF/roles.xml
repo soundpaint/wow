@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  User roles are stored in the database that backs the system.
+  They are managed with some role (typically, the "admin" role)
+  that has access to the pages and functions for managing roles.
+  For bootstrapping purposes, i.e. when starting with an
+  empty database, there is not yet any role for managing roles.
+  Therefore, this configuration file defines a minimal set
+  of roles (usually, just the "admin" role and a guest role for
+  the process of login).
+-->
+<roles>
+  <role id="admin">
+    <default-page src="Index" />
+    <privilege-set ref="editMember" />
+  </role>
+  <role id="guest">
+    <default-page src="Index" />
+  </role>
+</roles>
+<!--
+  Local Variables:
+    coding:utf-8
+    mode:sgml
+    mode:nXML
+  End:
+-->
