@@ -1,0 +1,543 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="https://www.soundpaint.org/ontologies/wow.owl#"
+     xml:base="https://www.soundpaint.org/ontologies/wow.owl"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <owl:Ontology rdf:about="https://www.soundpaint.org/ontologies/wow.owl">
+        <rdfs:comment xml:lang="de">WOW Ontologie</rdfs:comment>
+        <rdfs:comment xml:lang="en">WOW Ontology</rdfs:comment>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Datatypes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- https://www.soundpaint.org/ontologies/wow.owl#wow:passwordCoding -->
+
+    <rdfs:Datatype rdf:about="https://www.soundpaint.org/ontologies/wow.owl#wow:passwordCoding">
+        <owl:equivalentClass>
+            <rdfs:Datatype>
+                <owl:oneOf>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                        <rdf:first>md5</rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                <rdf:first>plain</rdf:first>
+                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </owl:oneOf>
+            </rdfs:Datatype>
+        </owl:equivalentClass>
+    </rdfs:Datatype>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- https://www.soundpaint.org/ontologies/wow.owl#Dictionary_contains_DictionaryEntry -->
+
+    <owl:ObjectProperty rdf:about="https://www.soundpaint.org/ontologies/wow.owl#Dictionary_contains_DictionaryEntry">
+        <rdfs:domain rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#Dictionary"/>
+        <rdfs:range rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#DictionaryEntry"/>
+        <rdfs:label>contains Entry</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://www.soundpaint.org/ontologies/wow.owl#Dictionary_supports_Language -->
+
+    <owl:ObjectProperty rdf:about="https://www.soundpaint.org/ontologies/wow.owl#Dictionary_supports_Language">
+        <rdfs:domain rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#Dictionary"/>
+        <rdfs:range rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#Language"/>
+        <rdfs:label>supports Language</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://www.soundpaint.org/ontologies/wow.owl#PrivilegeSet_contains_Privilege -->
+
+    <owl:ObjectProperty rdf:about="https://www.soundpaint.org/ontologies/wow.owl#PrivilegeSet_contains_Privilege">
+        <rdfs:domain rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#PrivilegeSet"/>
+        <rdfs:range rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#Privilege"/>
+        <rdfs:label>contains Privilege</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://www.soundpaint.org/ontologies/wow.owl#Role_hasPrivilegeSet_PrivilegeSet -->
+
+    <owl:ObjectProperty rdf:about="https://www.soundpaint.org/ontologies/wow.owl#Role_hasPrivilegeSet_PrivilegeSet">
+        <rdfs:domain rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#Role"/>
+        <rdfs:range rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#PrivilegeSet"/>
+        <rdfs:label>has PrivilegeSet</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://www.soundpaint.org/ontologies/wow.owl#SystemConfiguration_actsAsUserWhenLoggedOff_User -->
+
+    <owl:ObjectProperty rdf:about="https://www.soundpaint.org/ontologies/wow.owl#SystemConfiguration_actsAsUserWhenLoggedOff_User">
+        <rdfs:domain rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#SystemConfiguration"/>
+        <rdfs:range rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#User"/>
+        <rdfs:label>acts as User when logged off</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://www.soundpaint.org/ontologies/wow.owl#SystemConfiguration_deploysDictionary_Dictionary -->
+
+    <owl:ObjectProperty rdf:about="https://www.soundpaint.org/ontologies/wow.owl#SystemConfiguration_deploysDictionary_Dictionary">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#SystemConfiguration"/>
+        <rdfs:range rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#Dictionary"/>
+        <rdfs:label>deploys Dictionary</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://www.soundpaint.org/ontologies/wow.owl#User_hasRole_Role -->
+
+    <owl:ObjectProperty rdf:about="https://www.soundpaint.org/ontologies/wow.owl#User_hasRole_Role">
+        <rdfs:domain rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#User"/>
+        <rdfs:range rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#Role"/>
+        <rdfs:label>has Role</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- https://www.soundpaint.org/ontologies/wow.owl#Language_hasDisplayName_name -->
+
+    <owl:DatatypeProperty rdf:about="https://www.soundpaint.org/ontologies/wow.owl#Language_hasDisplayName_name">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#Language"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:label>has display name</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://www.soundpaint.org/ontologies/wow.owl#Language_hasLanguageCode_code -->
+
+    <owl:DatatypeProperty rdf:about="https://www.soundpaint.org/ontologies/wow.owl#Language_hasLanguageCode_code">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#Language"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:label>has language code</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://www.soundpaint.org/ontologies/wow.owl#Role_hasDefaultStartPage_uri -->
+
+    <owl:DatatypeProperty rdf:about="https://www.soundpaint.org/ontologies/wow.owl#Role_hasDefaultStartPage_uri">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#Role"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#anyURI"/>
+        <rdfs:label>has default start page</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://www.soundpaint.org/ontologies/wow.owl#Role_hasId_id -->
+
+    <owl:DatatypeProperty rdf:about="https://www.soundpaint.org/ontologies/wow.owl#Role_hasId_id">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#Role"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:label>has ID</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://www.soundpaint.org/ontologies/wow.owl#SystemConfiguration_assignsBinariesToPackage_packagepath -->
+
+    <owl:DatatypeProperty rdf:about="https://www.soundpaint.org/ontologies/wow.owl#SystemConfiguration_assignsBinariesToPackage_packagepath">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#SystemConfiguration"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:label>assigns binaries to package</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://www.soundpaint.org/ontologies/wow.owl#SystemConfiguration_assignsPagesToPackage_packagepath -->
+
+    <owl:DatatypeProperty rdf:about="https://www.soundpaint.org/ontologies/wow.owl#SystemConfiguration_assignsPagesToPackage_packagepath">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#SystemConfiguration"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:label>assigns pages to package</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://www.soundpaint.org/ontologies/wow.owl#SystemConfiguration_deploysShortcutIcon_iconuri -->
+
+    <owl:DatatypeProperty rdf:about="https://www.soundpaint.org/ontologies/wow.owl#SystemConfiguration_deploysShortcutIcon_iconuri">
+        <rdfs:domain rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#SystemConfiguration"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#anyURI"/>
+        <rdfs:label>deploys shortcut icon</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://www.soundpaint.org/ontologies/wow.owl#SystemConfiguration_hasLog4JPropsFilePath_filepath -->
+
+    <owl:DatatypeProperty rdf:about="https://www.soundpaint.org/ontologies/wow.owl#SystemConfiguration_hasLog4JPropsFilePath_filepath">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#SystemConfiguration"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:label>has log4j properties file path</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://www.soundpaint.org/ontologies/wow.owl#SystemConfiguration_storesKnowledgebaseModelHistoryInFile_filepath -->
+
+    <owl:DatatypeProperty rdf:about="https://www.soundpaint.org/ontologies/wow.owl#SystemConfiguration_storesKnowledgebaseModelHistoryInFile_filepath">
+        <rdfs:domain rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#SystemConfiguration"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:label>stores knowledgebase model history in file</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://www.soundpaint.org/ontologies/wow.owl#User_hasId_id -->
+
+    <owl:DatatypeProperty rdf:about="https://www.soundpaint.org/ontologies/wow.owl#User_hasId_id">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#User"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:label>has ID</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://www.soundpaint.org/ontologies/wow.owl#User_hasPasswordCoding_id -->
+
+    <owl:DatatypeProperty rdf:about="https://www.soundpaint.org/ontologies/wow.owl#User_hasPasswordCoding_id">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#User"/>
+        <rdfs:range rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#wow:passwordCoding"/>
+        <rdfs:label>has password coding</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://www.soundpaint.org/ontologies/wow.owl#User_hasPasswordSalt_salt -->
+
+    <owl:DatatypeProperty rdf:about="https://www.soundpaint.org/ontologies/wow.owl#User_hasPasswordSalt_salt">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#User"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:label>has password salt</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://www.soundpaint.org/ontologies/wow.owl#User_hasPasswordText_text -->
+
+    <owl:DatatypeProperty rdf:about="https://www.soundpaint.org/ontologies/wow.owl#User_hasPasswordText_text">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#User"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:label>has password text</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://www.soundpaint.org/ontologies/wow.owl#User_hasStartPage_uri -->
+
+    <owl:DatatypeProperty rdf:about="https://www.soundpaint.org/ontologies/wow.owl#User_hasStartPage_uri">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#User"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#anyURI"/>
+        <rdfs:label>has start page</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- https://www.soundpaint.org/ontologies/wow.owl#Dictionary -->
+
+    <owl:Class rdf:about="https://www.soundpaint.org/ontologies/wow.owl#Dictionary"/>
+    
+
+
+    <!-- https://www.soundpaint.org/ontologies/wow.owl#DictionaryEntry -->
+
+    <owl:Class rdf:about="https://www.soundpaint.org/ontologies/wow.owl#DictionaryEntry"/>
+    
+
+
+    <!-- https://www.soundpaint.org/ontologies/wow.owl#Language -->
+
+    <owl:Class rdf:about="https://www.soundpaint.org/ontologies/wow.owl#Language"/>
+    
+
+
+    <!-- https://www.soundpaint.org/ontologies/wow.owl#Page -->
+
+    <owl:Class rdf:about="https://www.soundpaint.org/ontologies/wow.owl#Page">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:label xml:lang="en">Page</rdfs:label>
+        <rdfs:label xml:lang="de">Seite</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://www.soundpaint.org/ontologies/wow.owl#Privilege -->
+
+    <owl:Class rdf:about="https://www.soundpaint.org/ontologies/wow.owl#Privilege"/>
+    
+
+
+    <!-- https://www.soundpaint.org/ontologies/wow.owl#PrivilegeSet -->
+
+    <owl:Class rdf:about="https://www.soundpaint.org/ontologies/wow.owl#PrivilegeSet"/>
+    
+
+
+    <!-- https://www.soundpaint.org/ontologies/wow.owl#Role -->
+
+    <owl:Class rdf:about="https://www.soundpaint.org/ontologies/wow.owl#Role"/>
+    
+
+
+    <!-- https://www.soundpaint.org/ontologies/wow.owl#SystemConfiguration -->
+
+    <owl:Class rdf:about="https://www.soundpaint.org/ontologies/wow.owl#SystemConfiguration"/>
+    
+
+
+    <!-- https://www.soundpaint.org/ontologies/wow.owl#User -->
+
+    <owl:Class rdf:about="https://www.soundpaint.org/ontologies/wow.owl#User"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- https://www.soundpaint.org/ontologies/wow.owl#Dictionary_systemDictionary -->
+
+    <owl:NamedIndividual rdf:about="https://www.soundpaint.org/ontologies/wow.owl#Dictionary_systemDictionary">
+        <rdf:type rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#Dictionary"/>
+        <Dictionary_supports_Language rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#Language_de"/>
+        <Dictionary_supports_Language rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#Language_en"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://www.soundpaint.org/ontologies/wow.owl#Language_de -->
+
+    <owl:NamedIndividual rdf:about="https://www.soundpaint.org/ontologies/wow.owl#Language_de">
+        <rdf:type rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#Language"/>
+        <Language_hasDisplayName_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Deutsch</Language_hasDisplayName_name>
+        <Language_hasLanguageCode_code rdf:datatype="http://www.w3.org/2001/XMLSchema#string">de</Language_hasLanguageCode_code>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://www.soundpaint.org/ontologies/wow.owl#Language_en -->
+
+    <owl:NamedIndividual rdf:about="https://www.soundpaint.org/ontologies/wow.owl#Language_en">
+        <rdf:type rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#Language"/>
+        <Language_hasDisplayName_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">English</Language_hasDisplayName_name>
+        <Language_hasLanguageCode_code rdf:datatype="http://www.w3.org/2001/XMLSchema#string">en</Language_hasLanguageCode_code>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://www.soundpaint.org/ontologies/wow.owl#Page_Index -->
+
+    <owl:NamedIndividual rdf:about="https://www.soundpaint.org/ontologies/wow.owl#Page_Index">
+        <rdf:type rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#Page"/>
+        <rdfs:label xml:lang="en">Index</rdfs:label>
+        <rdfs:label xml:lang="de">Inhaltsverzeichnis</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://www.soundpaint.org/ontologies/wow.owl#Page_Login -->
+
+    <owl:NamedIndividual rdf:about="https://www.soundpaint.org/ontologies/wow.owl#Page_Login">
+        <rdf:type rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#Page"/>
+        <rdfs:label xml:lang="de">Anmelden</rdfs:label>
+        <rdfs:label xml:lang="en">Login</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://www.soundpaint.org/ontologies/wow.owl#PrivilegeSet_manageUser -->
+
+    <owl:NamedIndividual rdf:about="https://www.soundpaint.org/ontologies/wow.owl#PrivilegeSet_manageUser">
+        <rdf:type rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#PrivilegeSet"/>
+        <PrivilegeSet_contains_Privilege rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#Privilege_createUser"/>
+        <PrivilegeSet_contains_Privilege rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#Privilege_deleteUser"/>
+        <PrivilegeSet_contains_Privilege rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#Privilege_readUser"/>
+        <PrivilegeSet_contains_Privilege rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#Privilege_updateUser"/>
+        <rdfs:comment>Grant full access on User records.</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://www.soundpaint.org/ontologies/wow.owl#Privilege_createUser -->
+
+    <owl:NamedIndividual rdf:about="https://www.soundpaint.org/ontologies/wow.owl#Privilege_createUser">
+        <rdf:type rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#Privilege"/>
+        <rdfs:comment>Create a new User record.</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://www.soundpaint.org/ontologies/wow.owl#Privilege_deleteUser -->
+
+    <owl:NamedIndividual rdf:about="https://www.soundpaint.org/ontologies/wow.owl#Privilege_deleteUser">
+        <rdf:type rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#Privilege"/>
+        <rdfs:comment>Delete an existing User record.</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://www.soundpaint.org/ontologies/wow.owl#Privilege_readUser -->
+
+    <owl:NamedIndividual rdf:about="https://www.soundpaint.org/ontologies/wow.owl#Privilege_readUser">
+        <rdf:type rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#Privilege"/>
+        <rdfs:comment>Read data from an existing User record.</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://www.soundpaint.org/ontologies/wow.owl#Privilege_updateUser -->
+
+    <owl:NamedIndividual rdf:about="https://www.soundpaint.org/ontologies/wow.owl#Privilege_updateUser">
+        <rdf:type rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#Privilege"/>
+        <rdfs:comment>Update data of an existing User record.</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://www.soundpaint.org/ontologies/wow.owl#Role_admin -->
+
+    <owl:NamedIndividual rdf:about="https://www.soundpaint.org/ontologies/wow.owl#Role_admin">
+        <rdf:type rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#Role"/>
+        <Role_hasPrivilegeSet_PrivilegeSet rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#PrivilegeSet_manageUser"/>
+        <Role_hasDefaultStartPage_uri>Index</Role_hasDefaultStartPage_uri>
+        <Role_hasId_id>admin</Role_hasId_id>
+        <rdfs:comment>&apos;admin&apos; Role record.  This role and the &apos;guest&apos; role are predefined and can not be deleted since they are required for boot strapping.</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://www.soundpaint.org/ontologies/wow.owl#Role_guest -->
+
+    <owl:NamedIndividual rdf:about="https://www.soundpaint.org/ontologies/wow.owl#Role_guest">
+        <rdf:type rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#Role"/>
+        <Role_hasDefaultStartPage_uri rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">Index</Role_hasDefaultStartPage_uri>
+        <Role_hasId_id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">guest</Role_hasId_id>
+        <rdfs:comment>&apos;guest&apos; Role record.  This role and the &apos;admin&apos; role are predefined and can not be deleted since they are required for boot strapping.</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://www.soundpaint.org/ontologies/wow.owl#SystemConfiguration_defaultSystemConfiguration -->
+
+    <owl:NamedIndividual rdf:about="https://www.soundpaint.org/ontologies/wow.owl#SystemConfiguration_defaultSystemConfiguration">
+        <rdf:type rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#SystemConfiguration"/>
+        <SystemConfiguration_actsAsUserWhenLoggedOff_User rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#User_guest"/>
+        <SystemConfiguration_deploysDictionary_Dictionary rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#Dictionary_systemDictionary"/>
+        <SystemConfiguration_assignsPagesToPackage_packagepath rdf:datatype="http://www.w3.org/2001/XMLSchema#string">org.soundpaint.wow</SystemConfiguration_assignsPagesToPackage_packagepath>
+        <SystemConfiguration_deploysShortcutIcon_iconuri rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">../images/logo.png</SystemConfiguration_deploysShortcutIcon_iconuri>
+        <SystemConfiguration_hasLog4JPropsFilePath_filepath rdf:datatype="http://www.w3.org/2001/XMLSchema#string">log4j.properties</SystemConfiguration_hasLog4JPropsFilePath_filepath>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://www.soundpaint.org/ontologies/wow.owl#User_admin -->
+
+    <owl:NamedIndividual rdf:about="https://www.soundpaint.org/ontologies/wow.owl#User_admin">
+        <rdf:type rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#User"/>
+        <User_hasRole_Role rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#Role_admin"/>
+        <User_hasRole_Role rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#Role_guest"/>
+        <Role_hasId_id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">admin</Role_hasId_id>
+        <User_hasPasswordCoding_id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">md5</User_hasPasswordCoding_id>
+        <User_hasPasswordSalt_salt rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></User_hasPasswordSalt_salt>
+        <User_hasPasswordText_text rdf:datatype="http://www.w3.org/2001/XMLSchema#string">21232f297a57a5a743894a0e4a801fc3</User_hasPasswordText_text>
+        <User_hasStartPage_uri rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Index</User_hasStartPage_uri>
+        <rdfs:comment>&apos;admin&apos; User record.  This user and the &apos;guest&apos; user are predefined and can not be deleted since they are required for boot strapping.</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://www.soundpaint.org/ontologies/wow.owl#User_guest -->
+
+    <owl:NamedIndividual rdf:about="https://www.soundpaint.org/ontologies/wow.owl#User_guest">
+        <rdf:type rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#User"/>
+        <User_hasRole_Role rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#Role_guest"/>
+        <User_hasId_id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">guest</User_hasId_id>
+        <User_hasPasswordCoding_id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">plain</User_hasPasswordCoding_id>
+        <User_hasPasswordText_text rdf:datatype="http://www.w3.org/2001/XMLSchema#string">guest</User_hasPasswordText_text>
+        <User_hasStartPage_uri rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Index</User_hasStartPage_uri>
+        <rdfs:comment>&apos;guest&apos; User record.  This user and the &apos;admin&apos; user are predefined and can not be deleted since they are required for boot strapping.</rdfs:comment>
+    </owl:NamedIndividual>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi -->
+
