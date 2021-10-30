@@ -24,9 +24,16 @@
     
 
 
-    <!-- https://www.soundpaint.org/ontologies/wow.owl#wow:passwordCoding -->
+    <!-- https://www.soundpaint.org/ontologies/wow.owl#wow:hashAlgorithm -->
 
-    <rdfs:Datatype rdf:about="https://www.soundpaint.org/ontologies/wow.owl#wow:passwordCoding">
+    <rdfs:Datatype rdf:about="https://www.soundpaint.org/ontologies/wow.owl#wow:hashAlgorithm">
+        <rdfs:comment>&lt;p&gt;
+The hash algorithm to be applied to a password phrase.  If hash algorithm is &quot;plain&quot;, no hashing at all is applied, and the password digest will be identical to the password phrase (clear text).
+&lt;/p&gt;
+
+&lt;p&gt;
+TODO: Currently, only MD5 (&quot;md5&quot;) and &quot;plain&quot; are supported.  MD5 is no more conssidered as a secure hashing method,  Support for alternative hashing methods should be added.
+&lt;/p&gt;</rdfs:comment>
         <owl:equivalentClass>
             <rdfs:Datatype>
                 <owl:oneOf>
@@ -59,12 +66,41 @@
     
 
 
+    <!-- https://www.soundpaint.org/ontologies/wow.owl#DictionaryEntryTemplate_isForLanguage_Language -->
+
+    <owl:ObjectProperty rdf:about="https://www.soundpaint.org/ontologies/wow.owl#DictionaryEntryTemplate_isForLanguage_Language">
+        <rdfs:domain rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#DictionaryEntryTemplate"/>
+        <rdfs:range rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#Language"/>
+        <rdfs:comment>&lt;p&gt;
+This property is not manually managed, but automatically updated when creating or changing dictionary entries via the WOW i18n API.
+&lt;/p&gt;</rdfs:comment>
+        <rdfs:label>is for dictionary entry template language</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://www.soundpaint.org/ontologies/wow.owl#DictionaryEntry_hasTemplate_DictionaryEntryTemplate -->
+
+    <owl:ObjectProperty rdf:about="https://www.soundpaint.org/ontologies/wow.owl#DictionaryEntry_hasTemplate_DictionaryEntryTemplate">
+        <rdfs:domain rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#DictionaryEntry"/>
+        <rdfs:range rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#DictionaryEntryTemplate"/>
+        <rdfs:comment>&lt;p&gt;
+This property is not manually managed, but automatically updated when creating or changing dictionary entries via the WOW i18n API.
+&lt;/p&gt;</rdfs:comment>
+        <rdfs:label>has dictionary entry template</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
     <!-- https://www.soundpaint.org/ontologies/wow.owl#Dictionary_contains_DictionaryEntry -->
 
     <owl:ObjectProperty rdf:about="https://www.soundpaint.org/ontologies/wow.owl#Dictionary_contains_DictionaryEntry">
         <rdfs:domain rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#Dictionary"/>
         <rdfs:range rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#DictionaryEntry"/>
-        <rdfs:label>contains Entry</rdfs:label>
+        <rdfs:comment>&lt;p&gt;
+This property is not manually managed, but automatically updated when creating or changing dictionary entries via the WOW i18n API.
+&lt;/p&gt;</rdfs:comment>
+        <rdfs:label>contains dictionary entry</rdfs:label>
     </owl:ObjectProperty>
     
 
@@ -74,7 +110,96 @@
     <owl:ObjectProperty rdf:about="https://www.soundpaint.org/ontologies/wow.owl#Dictionary_supports_Language">
         <rdfs:domain rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#Dictionary"/>
         <rdfs:range rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#Language"/>
-        <rdfs:label>supports Language</rdfs:label>
+        <rdfs:comment>&lt;p&gt;
+The value of this property is preconfigured and usually does not need to be changed at all, unless a completely new language is added to the system.
+&lt;/p&gt;</rdfs:comment>
+        <rdfs:label>supports dictionary language</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://www.soundpaint.org/ontologies/wow.owl#Page_hasBrowserTitle_DictionaryEntry -->
+
+    <owl:ObjectProperty rdf:about="https://www.soundpaint.org/ontologies/wow.owl#Page_hasBrowserTitle_DictionaryEntry">
+        <rdfs:domain rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#Page"/>
+        <rdfs:range rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#DictionaryEntry"/>
+        <rdfs:comment>&lt;p&gt;
+Occurrences of this object property should &lt;em&gt;not&lt;/em&gt; be manually managed.  Instead, they should be automatically updated whenever a page is compiled from a page template.
+&lt;/p&gt;
+
+&lt;p&gt;
+TODO: How to track dictionary entry usages from binary and other non-page resources?
+&lt;/p&gt;</rdfs:comment>
+        <rdfs:label>has page browser title</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://www.soundpaint.org/ontologies/wow.owl#Page_hasTitle_DictionaryEntry -->
+
+    <owl:ObjectProperty rdf:about="https://www.soundpaint.org/ontologies/wow.owl#Page_hasTitle_DictionaryEntry">
+        <rdfs:domain rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#Page"/>
+        <rdfs:range rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#DictionaryEntry"/>
+        <rdfs:comment>&lt;p&gt;
+Occurrences of this object property should &lt;em&gt;not&lt;/em&gt; be manually managed.  Instead, they should be automatically updated whenever a page is compiled from a page template.
+&lt;/p&gt;
+
+&lt;p&gt;
+TODO: How to track dictionary entry usages from binary and other non-page resources?
+&lt;/p&gt;</rdfs:comment>
+        <rdfs:label>has page title</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://www.soundpaint.org/ontologies/wow.owl#Page_references_DictionaryEntry -->
+
+    <owl:ObjectProperty rdf:about="https://www.soundpaint.org/ontologies/wow.owl#Page_references_DictionaryEntry">
+        <rdfs:domain rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#Page"/>
+        <rdfs:range rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#DictionaryEntry"/>
+        <rdfs:comment>&lt;p&gt;
+Used to track usages of dictionary entries.  Examples:
+
+&lt;ul&gt;
+&lt;li&gt;Before removing an supposedly unused dictionary entry, check if there is still a page that uses this dictionary entry.&lt;/li&gt;
+&lt;li&gt;Before updating an existing dictionary entry, check which pages will be affected.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/p&gt;
+
+&lt;p&gt;
+Occurrences of this object property should &lt;em&gt;not&lt;/em&gt; be manually managed.  Instead, they should be automatically updated whenever a page is compiled from a page template.
+&lt;/p&gt;
+
+&lt;p&gt;
+TODO: How to track dictionary entry usages from binary and other non-page resources?
+&lt;/p&gt;</rdfs:comment>
+        <rdfs:label>references dictionary entry</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://www.soundpaint.org/ontologies/wow.owl#Page_references_Privilege -->
+
+    <owl:ObjectProperty rdf:about="https://www.soundpaint.org/ontologies/wow.owl#Page_references_Privilege">
+        <rdfs:domain rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#Page"/>
+        <rdfs:range rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#Privilege"/>
+        <rdfs:comment>&lt;p&gt;
+Used to track usages of privileges.  Examples:
+
+&lt;ul&gt;
+&lt;li&gt;Before removing an supposedly unused privilege, check if there is still a page that uses this privilege.&lt;/li&gt;
+&lt;li&gt;Before changing privileges for a privilege set or role, check which pages will be affected.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/p&gt;
+
+&lt;p&gt;
+Occurrences of this object property should &lt;em&gt;not&lt;/em&gt; be manually managed.  Instead, they should be automatically updated whenever a page is compiled from a page template.
+&lt;/p&gt;
+
+&lt;p&gt;
+TODO: How to track dictionary entry usages from binary and other non-page resources?
+&lt;/p&gt;</rdfs:comment>
+        <rdfs:label>references privilege</rdfs:label>
     </owl:ObjectProperty>
     
 
@@ -84,7 +209,10 @@
     <owl:ObjectProperty rdf:about="https://www.soundpaint.org/ontologies/wow.owl#PrivilegeSet_contains_Privilege">
         <rdfs:domain rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#PrivilegeSet"/>
         <rdfs:range rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#Privilege"/>
-        <rdfs:label>contains Privilege</rdfs:label>
+        <rdfs:comment>&lt;p&gt;
+This property is not manually managed, but automatically updated when creating or changing privilege sets via the WOW security API.
+&lt;/p&gt;</rdfs:comment>
+        <rdfs:label>contains privilege</rdfs:label>
     </owl:ObjectProperty>
     
 
@@ -94,17 +222,24 @@
     <owl:ObjectProperty rdf:about="https://www.soundpaint.org/ontologies/wow.owl#Role_hasPrivilegeSet_PrivilegeSet">
         <rdfs:domain rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#Role"/>
         <rdfs:range rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#PrivilegeSet"/>
-        <rdfs:label>has PrivilegeSet</rdfs:label>
+        <rdfs:comment>&lt;p&gt;
+This property is not manually managed, but automatically updated when creating or changing roles via the WOW security API.
+&lt;/p&gt;</rdfs:comment>
+        <rdfs:label>has privilege set</rdfs:label>
     </owl:ObjectProperty>
     
 
 
-    <!-- https://www.soundpaint.org/ontologies/wow.owl#SystemConfiguration_actsAsUserWhenLoggedOff_User -->
+    <!-- https://www.soundpaint.org/ontologies/wow.owl#SystemConfiguration_actsWhileNotLoggedInAsUser_User -->
 
-    <owl:ObjectProperty rdf:about="https://www.soundpaint.org/ontologies/wow.owl#SystemConfiguration_actsAsUserWhenLoggedOff_User">
+    <owl:ObjectProperty rdf:about="https://www.soundpaint.org/ontologies/wow.owl#SystemConfiguration_actsWhileNotLoggedInAsUser_User">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
         <rdfs:domain rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#SystemConfiguration"/>
         <rdfs:range rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#User"/>
-        <rdfs:label>acts as User when logged off</rdfs:label>
+        <rdfs:comment>&lt;p&gt;
+This property is usually configured once when setting up a new WOW system.  When using the default setup, there is no need to do anything regarding this property.
+&lt;/p&gt;</rdfs:comment>
+        <rdfs:label>acts while not logged in as user</rdfs:label>
     </owl:ObjectProperty>
     
 
@@ -115,7 +250,10 @@
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
         <rdfs:domain rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#SystemConfiguration"/>
         <rdfs:range rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#Dictionary"/>
-        <rdfs:label>deploys Dictionary</rdfs:label>
+        <rdfs:comment>&lt;p&gt;
+This property is usually configured once when setting up a new WOW system.  When using the default setup, there is no need to do anything regarding this property.
+&lt;/p&gt;</rdfs:comment>
+        <rdfs:label>deploys dictionary</rdfs:label>
     </owl:ObjectProperty>
     
 
@@ -125,16 +263,22 @@
     <owl:ObjectProperty rdf:about="https://www.soundpaint.org/ontologies/wow.owl#User_hasRole_Role">
         <rdfs:domain rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#User"/>
         <rdfs:range rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#Role"/>
-        <rdfs:label>has Role</rdfs:label>
+        <rdfs:comment>&lt;p&gt;
+This property is not manually managed, but automatically updated when creating or changing user profiles via the WOW security API.
+&lt;/p&gt;</rdfs:comment>
+        <rdfs:label>has role</rdfs:label>
     </owl:ObjectProperty>
     
 
 
-    <!-- https://www.soundpaint.org/ontologies/wow.owl#dictionaryEntry_hasFormalParameter_DictionaryEntryParameter -->
+    <!-- https://www.soundpaint.org/ontologies/wow.owl#dictionaryEntry_hasFormalParameter_DictionaryEntryFormalParameter -->
 
-    <owl:ObjectProperty rdf:about="https://www.soundpaint.org/ontologies/wow.owl#dictionaryEntry_hasFormalParameter_DictionaryEntryParameter">
+    <owl:ObjectProperty rdf:about="https://www.soundpaint.org/ontologies/wow.owl#dictionaryEntry_hasFormalParameter_DictionaryEntryFormalParameter">
         <rdfs:domain rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#DictionaryEntry"/>
-        <rdfs:range rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#DictionaryEntryParameter"/>
+        <rdfs:range rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#DictionaryEntryFormalParameter"/>
+        <rdfs:comment>&lt;p&gt;
+This property is not manually managed, but automatically updated when creating or changing dictionary entries via the WOW i18n API.
+&lt;/p&gt;</rdfs:comment>
         <rdfs:label>has dictionary entry formal parameter</rdfs:label>
     </owl:ObjectProperty>
     
@@ -151,23 +295,30 @@
     
 
 
+    <!-- https://www.soundpaint.org/ontologies/wow.owl#DictionaryEntryTemplate_hasTemplateValue_value -->
+
+    <owl:DatatypeProperty rdf:about="https://www.soundpaint.org/ontologies/wow.owl#DictionaryEntryTemplate_hasTemplateValue_value">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#DictionaryEntryTemplate"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>&lt;p&gt;
+This property is not manually managed, but automatically updated when creating or changing dictionary entries via the WOW i18n API.
+&lt;/p&gt;</rdfs:comment>
+        <rdfs:label>has dictionary entry template value</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
     <!-- https://www.soundpaint.org/ontologies/wow.owl#DictionaryEntry_hasKey_key -->
 
     <owl:DatatypeProperty rdf:about="https://www.soundpaint.org/ontologies/wow.owl#DictionaryEntry_hasKey_key">
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
         <rdfs:domain rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#DictionaryEntry"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-        <rdfs:label>has dictionary key</rdfs:label>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://www.soundpaint.org/ontologies/wow.owl#DictionaryEntry_hasValueTemplate_template -->
-
-    <owl:DatatypeProperty rdf:about="https://www.soundpaint.org/ontologies/wow.owl#DictionaryEntry_hasValueTemplate_template">
-        <rdfs:domain rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#DictionaryEntry"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-        <rdfs:label>has dictionary value template</rdfs:label>
+        <rdfs:comment>&lt;p&gt;
+This property is not manually managed, but automatically updated when creating or changing dictionary entries via the WOW i18n API.
+&lt;/p&gt;</rdfs:comment>
+        <rdfs:label>has dictionary entry key</rdfs:label>
     </owl:DatatypeProperty>
     
 
@@ -178,6 +329,9 @@
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
         <rdfs:domain rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#Language"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>&lt;p&gt;
+The value of this property is preconfigured and usually does not need to be changed at all, unless a completely new language is added to the system.
+&lt;/p&gt;</rdfs:comment>
         <rdfs:label>has display name</rdfs:label>
     </owl:DatatypeProperty>
     
@@ -188,8 +342,75 @@
     <owl:DatatypeProperty rdf:about="https://www.soundpaint.org/ontologies/wow.owl#Language_hasLanguageCode_code">
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
         <rdfs:domain rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#Language"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#language"/>
+        <rdfs:comment>&lt;p&gt;
+The value of this property is preconfigured and usually does not need to be changed at all, unless a completely new language is added to the system.
+&lt;/p&gt;</rdfs:comment>
         <rdfs:label>has language code</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://www.soundpaint.org/ontologies/wow.owl#Page_hasImplementation_bytecode -->
+
+    <owl:DatatypeProperty rdf:about="https://www.soundpaint.org/ontologies/wow.owl#Page_hasImplementation_bytecode">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#Page"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#hexBinary"/>
+        <rdfs:comment>&lt;p&gt;
+This data property stores the byte code of the Java class that implements the page skeleton.
+&lt;/p&gt;
+
+&lt;p&gt;
+This property is not manually managed, but automatically updated by the template compiler.
+&lt;/p&gt;</rdfs:comment>
+        <rdfs:label>has implementation bytecode</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://www.soundpaint.org/ontologies/wow.owl#Page_hasTemplateSource_xml -->
+
+    <owl:DatatypeProperty rdf:about="https://www.soundpaint.org/ontologies/wow.owl#Page_hasTemplateSource_xml">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#Page"/>
+        <rdfs:range rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral"/>
+        <rdfs:comment>&lt;p&gt;
+This data property stores the source code of a page template.
+&lt;/p&gt;
+
+&lt;p&gt;
+As of now, this property is manually managed.  A future version of WOW will contain a web-based template editor that will automatically manage this property.
+&lt;/p&gt;</rdfs:comment>
+        <rdfs:label>has page template source</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://www.soundpaint.org/ontologies/wow.owl#PrivilegeSet_hasDescription_text -->
+
+    <owl:DatatypeProperty rdf:about="https://www.soundpaint.org/ontologies/wow.owl#PrivilegeSet_hasDescription_text">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#PrivilegeSet"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>&lt;p&gt;
+This property is not manually managed, but automatically updated when creating or changing privilege sets via the WOW security API.
+&lt;/p&gt;</rdfs:comment>
+        <rdfs:label>has privilege set description</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://www.soundpaint.org/ontologies/wow.owl#Privilege_hasDescription_text -->
+
+    <owl:DatatypeProperty rdf:about="https://www.soundpaint.org/ontologies/wow.owl#Privilege_hasDescription_text">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#Privilege"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>&lt;p&gt;
+This property is not manually managed, but automatically updated when creating or changing privileges via the WOW security API.
+&lt;/p&gt;</rdfs:comment>
+        <rdfs:label>has privilege description</rdfs:label>
     </owl:DatatypeProperty>
     
 
@@ -200,7 +421,24 @@
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
         <rdfs:domain rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#Role"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#anyURI"/>
+        <rdfs:comment>&lt;p&gt;
+URL relative to the project root URL that the system redirects to when logging in with a specific role.  This URL is the default for the role.  The specific settings for a particular user may override this URL. 
+&lt;/p&gt;</rdfs:comment>
         <rdfs:label>has default start page</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://www.soundpaint.org/ontologies/wow.owl#Role_hasDescription_text -->
+
+    <owl:DatatypeProperty rdf:about="https://www.soundpaint.org/ontologies/wow.owl#Role_hasDescription_text">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#Role"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>&lt;p&gt;
+This property is not manually managed, but automatically updated when creating or changing roles via the WOW security API.
+&lt;/p&gt;</rdfs:comment>
+        <rdfs:label>has role description</rdfs:label>
     </owl:DatatypeProperty>
     
 
@@ -211,6 +449,9 @@
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
         <rdfs:domain rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#Role"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>&lt;p&gt;
+This property is not manually managed, but automatically updated when creating or changing roles via the WOW security API.
+&lt;/p&gt;</rdfs:comment>
         <rdfs:label>has role ID</rdfs:label>
     </owl:DatatypeProperty>
     
@@ -222,6 +463,9 @@
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
         <rdfs:domain rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#SystemConfiguration"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>&lt;p&gt;
+This property is usually configured once when setting up a new WOW system.  When using the default setup, there is no need to do anything regarding this property.
+&lt;/p&gt;</rdfs:comment>
         <rdfs:label>assigns binaries to package</rdfs:label>
     </owl:DatatypeProperty>
     
@@ -233,6 +477,9 @@
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
         <rdfs:domain rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#SystemConfiguration"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>&lt;p&gt;
+This property is usually configured once when setting up a new WOW system.  When using the default setup, there is no need to do anything regarding this property.
+&lt;/p&gt;</rdfs:comment>
         <rdfs:label>assigns pages to package</rdfs:label>
     </owl:DatatypeProperty>
     
@@ -241,8 +488,16 @@
     <!-- https://www.soundpaint.org/ontologies/wow.owl#SystemConfiguration_deploysShortcutIcon_iconuri -->
 
     <owl:DatatypeProperty rdf:about="https://www.soundpaint.org/ontologies/wow.owl#SystemConfiguration_deploysShortcutIcon_iconuri">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
         <rdfs:domain rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#SystemConfiguration"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#anyURI"/>
+        <rdfs:comment>&lt;p&gt;
+Provides a (preferably relative) link to the project icon.  You do not need to replace the default URI, but also can replace the icon image file itself, if desired.
+&lt;/p&gt;
+
+&lt;p&gt;
+This property is usually configured once when setting up a new WOW system.  When using the default setup, there is no need to do anything regarding this property.
+&lt;/p&gt;</rdfs:comment>
         <rdfs:label>deploys shortcut icon</rdfs:label>
     </owl:DatatypeProperty>
     
@@ -254,6 +509,9 @@
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
         <rdfs:domain rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#SystemConfiguration"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>&lt;p&gt;
+This property is usually configured once when setting up a new WOW system.  When using the default setup, there is no need to do anything regarding this property.
+&lt;/p&gt;</rdfs:comment>
         <rdfs:label>has log4j properties file path</rdfs:label>
     </owl:DatatypeProperty>
     
@@ -262,9 +520,27 @@
     <!-- https://www.soundpaint.org/ontologies/wow.owl#SystemConfiguration_storesKnowledgebaseModelHistoryInFile_filepath -->
 
     <owl:DatatypeProperty rdf:about="https://www.soundpaint.org/ontologies/wow.owl#SystemConfiguration_storesKnowledgebaseModelHistoryInFile_filepath">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
         <rdfs:domain rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#SystemConfiguration"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>&lt;p&gt;
+This property is usually configured once when setting up a new WOW system.  When using the default setup, there is no need to do anything regarding this property.
+&lt;/p&gt;</rdfs:comment>
         <rdfs:label>stores knowledgebase model history in file</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://www.soundpaint.org/ontologies/wow.owl#User_hasDescription_text -->
+
+    <owl:DatatypeProperty rdf:about="https://www.soundpaint.org/ontologies/wow.owl#User_hasDescription_text">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#User"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>&lt;p&gt;
+This property is not manually managed, but automatically updated when creating or changing user profiles via the WOW security API.
+&lt;/p&gt;</rdfs:comment>
+        <rdfs:label>has user description</rdfs:label>
     </owl:DatatypeProperty>
     
 
@@ -275,40 +551,50 @@
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
         <rdfs:domain rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#User"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>&lt;p&gt;
+This property is not manually managed, but automatically updated when creating or changing user profiles via the WOW security API.
+&lt;/p&gt;</rdfs:comment>
         <rdfs:label>has user ID</rdfs:label>
     </owl:DatatypeProperty>
     
 
 
-    <!-- https://www.soundpaint.org/ontologies/wow.owl#User_hasPasswordCoding_id -->
+    <!-- https://www.soundpaint.org/ontologies/wow.owl#User_hasPasswordDigest_text -->
 
-    <owl:DatatypeProperty rdf:about="https://www.soundpaint.org/ontologies/wow.owl#User_hasPasswordCoding_id">
+    <owl:DatatypeProperty rdf:about="https://www.soundpaint.org/ontologies/wow.owl#User_hasPasswordDigest_text">
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
         <rdfs:domain rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#User"/>
-        <rdfs:range rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#wow:passwordCoding"/>
-        <rdfs:label>has password coding</rdfs:label>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>&lt;p&gt;
+The password phrase &lt;em&gt;after&lt;/em&gt; the hash algorithm has been applied.  If encoding is set to &quot;plain&quot;, no hashing will be performed, and this property will contain the password phrase as clear text.
+&lt;/p&gt;
+
+&lt;p&gt;
+This property is not manually managed, but automatically updated when creating or changing the password phrase via the WOW security API.
+&lt;/p&gt;
+
+&lt;p&gt;
+TODO: Store digest as xsd:hexBinary rather than as xsd:text?
+&lt;/p&gt;</rdfs:comment>
+        <rdfs:label>has password digest</rdfs:label>
     </owl:DatatypeProperty>
     
 
 
-    <!-- https://www.soundpaint.org/ontologies/wow.owl#User_hasPasswordSalt_salt -->
+    <!-- https://www.soundpaint.org/ontologies/wow.owl#User_hasPasswordSalt_text -->
 
-    <owl:DatatypeProperty rdf:about="https://www.soundpaint.org/ontologies/wow.owl#User_hasPasswordSalt_salt">
+    <owl:DatatypeProperty rdf:about="https://www.soundpaint.org/ontologies/wow.owl#User_hasPasswordSalt_text">
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
         <rdfs:domain rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#User"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>&lt;p&gt;
+Some salt value appended to the password phrase when the hashing method is applied.  The salt value is, in contrast to the password phrase, not a secret, but known within the WOW system.  Typically, the date of the creation or last modification of the password phrase will be used as salt value.
+&lt;/p&gt;
+
+&lt;p&gt;
+This property is not manually managed, but automatically updated when creating or changing the password phrase via the WOW security API.
+&lt;/p&gt;</rdfs:comment>
         <rdfs:label>has password salt</rdfs:label>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://www.soundpaint.org/ontologies/wow.owl#User_hasPasswordText_text -->
-
-    <owl:DatatypeProperty rdf:about="https://www.soundpaint.org/ontologies/wow.owl#User_hasPasswordText_text">
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#User"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-        <rdfs:label>has password text</rdfs:label>
     </owl:DatatypeProperty>
     
 
@@ -319,7 +605,36 @@
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
         <rdfs:domain rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#User"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#anyURI"/>
+        <rdfs:comment>&lt;p&gt;
+URL relative to the project root URL that the system redirects to when logging in with as specific user.  This URL, if present, will override the default URL specified for the particular role of this user.  Otherwise, the default URL specified for the role will be used.
+&lt;/p&gt;
+
+&lt;p&gt;
+This property is not manually managed, but automatically updated when creating or changing user profiles via the WOW security API.
+&lt;/p&gt;</rdfs:comment>
         <rdfs:label>has start page</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://www.soundpaint.org/ontologies/wow.owl#User_usesHashAlgorithm_id -->
+
+    <owl:DatatypeProperty rdf:about="https://www.soundpaint.org/ontologies/wow.owl#User_usesHashAlgorithm_id">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#User"/>
+        <rdfs:range rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#wow:hashAlgorithm"/>
+        <rdfs:comment>&lt;p&gt;
+The hash algorithm that has been applied to the password phrase.  If hash algorithm is set to &quot;plain&quot;, no hashing at all is applied, and the password digest property will contain the password phrase as clear text.
+&lt;/p&gt;
+
+&lt;p&gt;
+This property is not manually managed, but automatically updated when creating or changing the password phrase via the WOW security API.
+&lt;/p&gt;
+
+&lt;p&gt;
+TODO: Currently, only MD5 (&quot;md5&quot;) and &quot;plain&quot; are supported.  MD5 is no more conssidered as a secure hashing method,  Support for alternative hashing methods should be added.
+&lt;/p&gt;</rdfs:comment>
+        <rdfs:label>uses hash algorithm</rdfs:label>
     </owl:DatatypeProperty>
     
 
@@ -327,8 +642,12 @@
     <!-- https://www.soundpaint.org/ontologies/wow.owl#dictionaryEntryParameter_hasId_id -->
 
     <owl:DatatypeProperty rdf:about="https://www.soundpaint.org/ontologies/wow.owl#dictionaryEntryParameter_hasId_id">
-        <rdfs:domain rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#DictionaryEntryParameter"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#DictionaryEntryFormalParameter"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>&lt;p&gt;
+This property is not manually managed, but automatically updated when creating or changing dictionary entries via the WOW i18n API.
+&lt;/p&gt;</rdfs:comment>
         <rdfs:label>has formal parameter ID</rdfs:label>
     </owl:DatatypeProperty>
     
@@ -347,32 +666,84 @@
 
     <!-- https://www.soundpaint.org/ontologies/wow.owl#Dictionary -->
 
-    <owl:Class rdf:about="https://www.soundpaint.org/ontologies/wow.owl#Dictionary"/>
+    <owl:Class rdf:about="https://www.soundpaint.org/ontologies/wow.owl#Dictionary">
+        <rdfs:comment>&lt;p&gt;
+The system-wide dictionary for translating items or complete texts into different languages.  The dictionary contains a set of dictionary entries, each with a dkey that is unique among all entries.
+&lt;/p&gt;</rdfs:comment>
+    </owl:Class>
     
 
 
     <!-- https://www.soundpaint.org/ontologies/wow.owl#DictionaryEntry -->
 
-    <owl:Class rdf:about="https://www.soundpaint.org/ontologies/wow.owl#DictionaryEntry"/>
+    <owl:Class rdf:about="https://www.soundpaint.org/ontologies/wow.owl#DictionaryEntry">
+        <rdfs:comment>&lt;p&gt;
+An entry within the dictionary.  An entry consists of
+
+&lt;ul&gt;
+&lt;li&gt;a key that uniquely identifies the entry among all entries in the dictionary,&lt;/li&gt;
+&lt;li&gt;any number of associated value templates for any of the supported languages, and&lt;/li&gt;
+&lt;li&gt;any number of formal paramters that the value template may contain and that will be replaced with actual values when the entry will be rendered.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;/p&gt;</rdfs:comment>
+    </owl:Class>
     
 
 
-    <!-- https://www.soundpaint.org/ontologies/wow.owl#DictionaryEntryParameter -->
+    <!-- https://www.soundpaint.org/ontologies/wow.owl#DictionaryEntryFormalParameter -->
 
-    <owl:Class rdf:about="https://www.soundpaint.org/ontologies/wow.owl#DictionaryEntryParameter"/>
+    <owl:Class rdf:about="https://www.soundpaint.org/ontologies/wow.owl#DictionaryEntryFormalParameter">
+        <rdfs:comment>&lt;p&gt;
+Description of a formal parameter that the value template of the associated dictionary entry may contain.
+&lt;/p&gt;
+
+&lt;p&gt;
+The formal parameter consists of
+
+&lt;ul&gt;
+&lt;li&gt;the parameter name as it may appear in the value template and&lt;li&gt;
+&lt;li&gt;a description of the parameter, such that any person editing the value template has all relevant information of what to expect the formal parameter to be replaced with when the entry will be rendered.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p/&gt;</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- https://www.soundpaint.org/ontologies/wow.owl#DictionaryEntryTemplate -->
+
+    <owl:Class rdf:about="https://www.soundpaint.org/ontologies/wow.owl#DictionaryEntryTemplate">
+        <rdfs:comment>&lt;p&gt;
+A template of a dictionary entry.  A template consists of
+
+&lt;ul&gt;
+&lt;li&gt;a link to the language that this entry&apos;s value represents and&lt;/li&gt;
+&lt;li&gt;the actual template&apos;s value that represents the entry&apos;s value translated into the associated language.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;/p&gt;</rdfs:comment>
+    </owl:Class>
     
 
 
     <!-- https://www.soundpaint.org/ontologies/wow.owl#Language -->
 
-    <owl:Class rdf:about="https://www.soundpaint.org/ontologies/wow.owl#Language"/>
+    <owl:Class rdf:about="https://www.soundpaint.org/ontologies/wow.owl#Language">
+        <rdfs:comment>&lt;p&gt;
+Predefined language as supported by the WOW system.  A language consists of
+
+&lt;ul&gt;
+&lt;li&gt;the two-letter language code (e.g. &quot;en&quot; or &quot;de&quot;) and&lt;/li&gt;
+&lt;li&gt;the display name of the language as it should appear in the language itself, e.g. &quot;English&quot; or &quot;Deutsch&quot;-&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/p&gt;</rdfs:comment>
+    </owl:Class>
     
 
 
     <!-- https://www.soundpaint.org/ontologies/wow.owl#Page -->
 
     <owl:Class rdf:about="https://www.soundpaint.org/ontologies/wow.owl#Page">
-        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
         <rdfs:label xml:lang="en">Page</rdfs:label>
         <rdfs:label xml:lang="de">Seite</rdfs:label>
     </owl:Class>
@@ -420,10 +791,74 @@
     
 
 
+    <!-- https://www.soundpaint.org/ontologies/wow.owl#DictionaryEntryTemplate_page.title.index_de -->
+
+    <owl:NamedIndividual rdf:about="https://www.soundpaint.org/ontologies/wow.owl#DictionaryEntryTemplate_page.title.index_de">
+        <rdf:type rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#DictionaryEntryTemplate"/>
+        <DictionaryEntryTemplate_isForLanguage_Language rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#Language_de"/>
+        <DictionaryEntryTemplate_hasTemplateValue_value>Inhaltsverzeichnis</DictionaryEntryTemplate_hasTemplateValue_value>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://www.soundpaint.org/ontologies/wow.owl#DictionaryEntryTemplate_page.title.index_en -->
+
+    <owl:NamedIndividual rdf:about="https://www.soundpaint.org/ontologies/wow.owl#DictionaryEntryTemplate_page.title.index_en">
+        <rdf:type rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#DictionaryEntryTemplate"/>
+        <DictionaryEntryTemplate_isForLanguage_Language rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#Language_en"/>
+        <DictionaryEntryTemplate_hasTemplateValue_value>Index</DictionaryEntryTemplate_hasTemplateValue_value>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://www.soundpaint.org/ontologies/wow.owl#DictionaryEntryTemplate_page.title.login_de -->
+
+    <owl:NamedIndividual rdf:about="https://www.soundpaint.org/ontologies/wow.owl#DictionaryEntryTemplate_page.title.login_de">
+        <rdf:type rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#DictionaryEntryTemplate"/>
+        <DictionaryEntryTemplate_isForLanguage_Language rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#Language_de"/>
+        <DictionaryEntryTemplate_hasTemplateValue_value>Anmelden</DictionaryEntryTemplate_hasTemplateValue_value>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://www.soundpaint.org/ontologies/wow.owl#DictionaryEntryTemplate_page.title.login_en -->
+
+    <owl:NamedIndividual rdf:about="https://www.soundpaint.org/ontologies/wow.owl#DictionaryEntryTemplate_page.title.login_en">
+        <rdf:type rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#DictionaryEntryTemplate"/>
+        <DictionaryEntryTemplate_isForLanguage_Language rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#Language_en"/>
+        <DictionaryEntryTemplate_hasTemplateValue_value>Login</DictionaryEntryTemplate_hasTemplateValue_value>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://www.soundpaint.org/ontologies/wow.owl#DictionaryEntry_page.title.index -->
+
+    <owl:NamedIndividual rdf:about="https://www.soundpaint.org/ontologies/wow.owl#DictionaryEntry_page.title.index">
+        <rdf:type rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#DictionaryEntry"/>
+        <DictionaryEntry_hasTemplate_DictionaryEntryTemplate rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#DictionaryEntryTemplate_page.title.index_de"/>
+        <DictionaryEntry_hasTemplate_DictionaryEntryTemplate rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#DictionaryEntryTemplate_page.title.index_en"/>
+        <DictionaryEntry_hasKey_key>page.title.index</DictionaryEntry_hasKey_key>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://www.soundpaint.org/ontologies/wow.owl#DictionaryEntry_page.title.login -->
+
+    <owl:NamedIndividual rdf:about="https://www.soundpaint.org/ontologies/wow.owl#DictionaryEntry_page.title.login">
+        <rdf:type rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#DictionaryEntry"/>
+        <DictionaryEntry_hasTemplate_DictionaryEntryTemplate rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#DictionaryEntryTemplate_page.title.login_de"/>
+        <DictionaryEntry_hasTemplate_DictionaryEntryTemplate rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#DictionaryEntryTemplate_page.title.login_en"/>
+        <DictionaryEntry_hasKey_key>page.title.login</DictionaryEntry_hasKey_key>
+    </owl:NamedIndividual>
+    
+
+
     <!-- https://www.soundpaint.org/ontologies/wow.owl#Dictionary_systemDictionary -->
 
     <owl:NamedIndividual rdf:about="https://www.soundpaint.org/ontologies/wow.owl#Dictionary_systemDictionary">
         <rdf:type rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#Dictionary"/>
+        <Dictionary_contains_DictionaryEntry rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#DictionaryEntry_page.title.index"/>
+        <Dictionary_contains_DictionaryEntry rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#DictionaryEntry_page.title.login"/>
         <Dictionary_supports_Language rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#Language_de"/>
         <Dictionary_supports_Language rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#Language_en"/>
     </owl:NamedIndividual>
@@ -435,7 +870,7 @@
     <owl:NamedIndividual rdf:about="https://www.soundpaint.org/ontologies/wow.owl#Language_de">
         <rdf:type rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#Language"/>
         <Language_hasDisplayName_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Deutsch</Language_hasDisplayName_name>
-        <Language_hasLanguageCode_code rdf:datatype="http://www.w3.org/2001/XMLSchema#string">de</Language_hasLanguageCode_code>
+        <Language_hasLanguageCode_code rdf:datatype="http://www.w3.org/2001/XMLSchema#language">de</Language_hasLanguageCode_code>
     </owl:NamedIndividual>
     
 
@@ -445,7 +880,7 @@
     <owl:NamedIndividual rdf:about="https://www.soundpaint.org/ontologies/wow.owl#Language_en">
         <rdf:type rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#Language"/>
         <Language_hasDisplayName_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">English</Language_hasDisplayName_name>
-        <Language_hasLanguageCode_code rdf:datatype="http://www.w3.org/2001/XMLSchema#string">en</Language_hasLanguageCode_code>
+        <Language_hasLanguageCode_code rdf:datatype="http://www.w3.org/2001/XMLSchema#language">en</Language_hasLanguageCode_code>
     </owl:NamedIndividual>
     
 
@@ -454,8 +889,70 @@
 
     <owl:NamedIndividual rdf:about="https://www.soundpaint.org/ontologies/wow.owl#Page_Index">
         <rdf:type rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#Page"/>
-        <rdfs:label xml:lang="en">Index</rdfs:label>
-        <rdfs:label xml:lang="de">Inhaltsverzeichnis</rdfs:label>
+        <Page_hasBrowserTitle_DictionaryEntry rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#DictionaryEntry_page.title.index"/>
+        <Page_hasTitle_DictionaryEntry rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#DictionaryEntry_page.title.index"/>
+        <Page_references_DictionaryEntry rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#DictionaryEntry_page.title.index"/>
+        <Page_hasTemplateSource_xml>&lt;!DOCTYPE template&gt;
+&lt;wow:template xmlns=&quot;http://www.w3.org/1999/xhtml&quot; lang=&quot;en&quot;
+              xmlns:wow=&quot;https://www.soundpaint.org/wow&quot;&gt;
+  &lt;wow:meta&gt;
+    &lt;wow:description&gt;landing page of wow website&lt;/wow:description&gt;
+    &lt;wow:keywords&gt;index, main page, landing page&lt;/wow:keywords&gt;
+    &lt;wow:title&gt;Welcome to Wow…&lt;/wow:title&gt;
+  &lt;/wow:meta&gt;
+  &lt;wow:content&gt;
+    &lt;p&gt;&lt;img src=&quot;../images/me.jpg&quot;
+            alt=&quot;picture of me&quot;
+            style=&quot;float:right;width:88px;height:102px;padding:10px&quot;/&gt;&lt;/p&gt;
+    &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+    sed do eiusmod tempor incididunt ut labore et dolore magna
+    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+    ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
+    aute irure dolor in reprehenderit in voluptate velit esse
+    cillum dolore eu fugiat nulla pariatur. Excepteur sint
+    occaecat cupidatat non proident, sunt in culpa qui officia
+    deserunt mollit anim id est laborum.&lt;/p&gt;
+    &lt;p&gt;Maecenas augue metus, venenatis ac est vitae, ultrices
+    congue leo. Morbi eu massa nisl. Duis quis dolor ac eros
+    ornare ultrices. Nulla facilisi. Pellentesque semper nulla et
+    tincidunt cursus. Vestibulum sit amet ante consequat, maximus
+    augue sed, lacinia turpis. Nulla pellentesque mi eu rutrum
+    faucibus. Cras mattis erat vitae porta tempus. Nullam sit amet
+    consectetur tellus. Suspendisse dictum ornare magna, vel
+    lacinia erat pharetra eget. Duis nec diam ornare, volutpat
+    risus ac, dictum nunc. Mauris tempus dolor at risus posuere,
+    sed porttitor metus posuere. Proin sit amet lacus eget mauris
+    finibus dapibus. In ac consequat libero, ac accumsan
+    dolor. Fusce vehicula purus dolor, semper mollis metus
+    sagittis tempor.&lt;/p&gt;
+    &lt;p&gt;Sed commodo, dolor eu lacinia facilisis, enim quam
+    tincidunt sapien, sed fringilla purus elit sagittis ex. Sed
+    congue feugiat consequat. Quisque rhoncus lorem at eros
+    porttitor tristique ac et mi. Fusce vitae turpis nec quam
+    viverra ornare. Mauris diam erat, elementum nec commodo quis,
+    blandit ultrices ante. Proin eu neque eget felis malesuada
+    semper. Curabitur quis justo libero.&lt;/p&gt;
+    &lt;p&gt;Nam elementum nibh eu accumsan pellentesque. Quisque
+    vestibulum libero nibh, in iaculis nulla dignissim
+    in. Suspendisse ac posuere leo. Proin nisl orci, ullamcorper
+    sed faucibus sed, rutrum ornare urna. Donec faucibus egestas
+    erat in gravida. Mauris vitae interdum odio, sed finibus
+    ligula. Vestibulum tincidunt eros at orci volutpat
+    facilisis. Curabitur id dui semper mi tincidunt vestibulum nec
+    a nibh. Nam non mi vulputate, rhoncus erat quis, consequat
+    neque. In hac habitasse platea dictumst. Nullam in euismod
+    erat. Proin eget purus efficitur erat aliquam accumsan. Duis
+    sit amet massa libero.&lt;/p&gt;
+    &lt;p&gt;Lorem ipsum created with www.lipsum.com.  More to follow soon…&lt;/p&gt;
+  &lt;/wow:content&gt;
+&lt;/wow:template&gt;
+&lt;!--
+  Local Variables:
+  coding:utf-8
+  mode:sgml
+  mode:nXML
+  End:
+--&gt;</Page_hasTemplateSource_xml>
     </owl:NamedIndividual>
     
 
@@ -464,8 +961,48 @@
 
     <owl:NamedIndividual rdf:about="https://www.soundpaint.org/ontologies/wow.owl#Page_Login">
         <rdf:type rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#Page"/>
-        <rdfs:label xml:lang="de">Anmelden</rdfs:label>
-        <rdfs:label xml:lang="en">Login</rdfs:label>
+        <Page_hasBrowserTitle_DictionaryEntry rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#DictionaryEntry_page.title.login"/>
+        <Page_hasTitle_DictionaryEntry rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#DictionaryEntry_page.title.login"/>
+        <Page_references_DictionaryEntry rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#DictionaryEntry_page.title.login"/>
+        <Page_hasTemplateSource_xml>&lt;!DOCTYPE template&gt;
+&lt;wow:template xmlns=&quot;http://www.w3.org/1999/xhtml&quot; lang=&quot;en&quot;
+              xmlns:wow=&quot;https://www.soundpaint.org/wow&quot;&gt;
+  &lt;wow:meta&gt;
+    &lt;wow:description&gt;user login&lt;/wow:description&gt;
+    &lt;wow:keywords&gt;login, login page&lt;/wow:keywords&gt;
+    &lt;wow:title&gt;Login&lt;/wow:title&gt;
+  &lt;/wow:meta&gt;
+  &lt;wow:content&gt;
+    &lt;p&gt;
+      &lt;table class=&quot;field-list&quot;&gt;
+        &lt;tr&gt;
+          &lt;td&gt;&lt;wow:i18n key=&quot;core.label.username&quot;/&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;input name=&quot;username&quot; type=&quot;text&quot; /&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td&gt;Password:&lt;/td&gt;
+          &lt;td&gt;&lt;input name=&quot;password&quot; type=&quot;password&quot; /&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/table&gt;
+    &lt;/p&gt;
+    &lt;!-- This &quot;comment&quot; will be \dropped. --&gt;
+    &lt;wow:code-comment&gt;This &quot;comment&quot;
+will be \put into
+the Java source code.&lt;/wow:code-comment&gt;
+    &lt;wow:html-comment&gt;This &quot;comment&quot; will be
+printed as \part of the created XHTML.&lt;/wow:html-comment&gt;
+    &lt;p&gt;
+      &lt;button type=&quot;button&quot;&gt;Submit&lt;/button&gt;
+    &lt;/p&gt;
+  &lt;/wow:content&gt;
+&lt;/wow:template&gt;
+&lt;!--
+  Local Variables:
+  coding:utf-8
+  mode:sgml
+  mode:nXML
+  End:
+--&gt;</Page_hasTemplateSource_xml>
     </owl:NamedIndividual>
     
 
@@ -546,7 +1083,7 @@
 
     <owl:NamedIndividual rdf:about="https://www.soundpaint.org/ontologies/wow.owl#SystemConfiguration_defaultSystemConfiguration">
         <rdf:type rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#SystemConfiguration"/>
-        <SystemConfiguration_actsAsUserWhenLoggedOff_User rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#User_guest"/>
+        <SystemConfiguration_actsWhileNotLoggedInAsUser_User rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#User_guest"/>
         <SystemConfiguration_deploysDictionary_Dictionary rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#Dictionary_systemDictionary"/>
         <SystemConfiguration_assignsPagesToPackage_packagepath rdf:datatype="http://www.w3.org/2001/XMLSchema#string">org.soundpaint.wow</SystemConfiguration_assignsPagesToPackage_packagepath>
         <SystemConfiguration_deploysShortcutIcon_iconuri rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">../images/logo.png</SystemConfiguration_deploysShortcutIcon_iconuri>
@@ -562,10 +1099,10 @@
         <User_hasRole_Role rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#Role_admin"/>
         <User_hasRole_Role rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#Role_guest"/>
         <Role_hasId_id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">admin</Role_hasId_id>
-        <User_hasPasswordCoding_id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">md5</User_hasPasswordCoding_id>
-        <User_hasPasswordSalt_salt rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></User_hasPasswordSalt_salt>
-        <User_hasPasswordText_text rdf:datatype="http://www.w3.org/2001/XMLSchema#string">21232f297a57a5a743894a0e4a801fc3</User_hasPasswordText_text>
+        <User_hasPasswordDigest_text rdf:datatype="http://www.w3.org/2001/XMLSchema#string">21232f297a57a5a743894a0e4a801fc3</User_hasPasswordDigest_text>
+        <User_hasPasswordSalt_text rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></User_hasPasswordSalt_text>
         <User_hasStartPage_uri rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Index</User_hasStartPage_uri>
+        <User_usesHashAlgorithm_id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">md5</User_usesHashAlgorithm_id>
         <rdfs:comment>&apos;admin&apos; User record.  This user and the &apos;guest&apos; user are predefined and can not be deleted since they are required for boot strapping.</rdfs:comment>
     </owl:NamedIndividual>
     
@@ -577,9 +1114,9 @@
         <rdf:type rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#User"/>
         <User_hasRole_Role rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#Role_guest"/>
         <User_hasId_id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">guest</User_hasId_id>
-        <User_hasPasswordCoding_id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">plain</User_hasPasswordCoding_id>
-        <User_hasPasswordText_text rdf:datatype="http://www.w3.org/2001/XMLSchema#string">guest</User_hasPasswordText_text>
+        <User_hasPasswordDigest_text rdf:datatype="http://www.w3.org/2001/XMLSchema#string">guest</User_hasPasswordDigest_text>
         <User_hasStartPage_uri rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Index</User_hasStartPage_uri>
+        <User_usesHashAlgorithm_id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">plain</User_usesHashAlgorithm_id>
         <rdfs:comment>&apos;guest&apos; User record.  This user and the &apos;admin&apos; user are predefined and can not be deleted since they are required for boot strapping.</rdfs:comment>
     </owl:NamedIndividual>
 </rdf:RDF>
