@@ -130,6 +130,16 @@
     
 
 
+    <!-- https://www.soundpaint.org/ontologies/wow.owl#dictionaryEntry_hasFormalParameter_DictionaryEntryParameter -->
+
+    <owl:ObjectProperty rdf:about="https://www.soundpaint.org/ontologies/wow.owl#dictionaryEntry_hasFormalParameter_DictionaryEntryParameter">
+        <rdfs:domain rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#DictionaryEntry"/>
+        <rdfs:range rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#DictionaryEntryParameter"/>
+        <rdfs:label>has dictionary entry formal parameter</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
     <!-- 
     ///////////////////////////////////////////////////////////////////////////////////////
     //
@@ -138,6 +148,27 @@
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
+    
+
+
+    <!-- https://www.soundpaint.org/ontologies/wow.owl#DictionaryEntry_hasKey_key -->
+
+    <owl:DatatypeProperty rdf:about="https://www.soundpaint.org/ontologies/wow.owl#DictionaryEntry_hasKey_key">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#DictionaryEntry"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:label>has dictionary key</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://www.soundpaint.org/ontologies/wow.owl#DictionaryEntry_hasValueTemplate_template -->
+
+    <owl:DatatypeProperty rdf:about="https://www.soundpaint.org/ontologies/wow.owl#DictionaryEntry_hasValueTemplate_template">
+        <rdfs:domain rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#DictionaryEntry"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:label>has dictionary value template</rdfs:label>
+    </owl:DatatypeProperty>
     
 
 
@@ -180,7 +211,7 @@
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
         <rdfs:domain rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#Role"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-        <rdfs:label>has ID</rdfs:label>
+        <rdfs:label>has role ID</rdfs:label>
     </owl:DatatypeProperty>
     
 
@@ -244,7 +275,7 @@
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
         <rdfs:domain rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#User"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-        <rdfs:label>has ID</rdfs:label>
+        <rdfs:label>has user ID</rdfs:label>
     </owl:DatatypeProperty>
     
 
@@ -293,6 +324,16 @@
     
 
 
+    <!-- https://www.soundpaint.org/ontologies/wow.owl#dictionaryEntryParameter_hasId_id -->
+
+    <owl:DatatypeProperty rdf:about="https://www.soundpaint.org/ontologies/wow.owl#dictionaryEntryParameter_hasId_id">
+        <rdfs:domain rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#DictionaryEntryParameter"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:label>has formal parameter ID</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
     <!-- 
     ///////////////////////////////////////////////////////////////////////////////////////
     //
@@ -313,6 +354,12 @@
     <!-- https://www.soundpaint.org/ontologies/wow.owl#DictionaryEntry -->
 
     <owl:Class rdf:about="https://www.soundpaint.org/ontologies/wow.owl#DictionaryEntry"/>
+    
+
+
+    <!-- https://www.soundpaint.org/ontologies/wow.owl#DictionaryEntryParameter -->
+
+    <owl:Class rdf:about="https://www.soundpaint.org/ontologies/wow.owl#DictionaryEntryParameter"/>
     
 
 
