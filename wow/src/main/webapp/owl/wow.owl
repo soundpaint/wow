@@ -295,6 +295,30 @@ This property is not manually managed, but automatically updated when creating o
     
 
 
+    <!-- https://www.soundpaint.org/ontologies/wow.owl#DictionaryEntryFormalParameter_hasDescription_text -->
+
+    <owl:DatatypeProperty rdf:about="https://www.soundpaint.org/ontologies/wow.owl#DictionaryEntryFormalParameter_hasDescription_text">
+        <rdfs:domain rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#DictionaryEntryFormalParameter"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:label>has formal parameter description</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://www.soundpaint.org/ontologies/wow.owl#DictionaryEntryFormalParameter_hasId_id -->
+
+    <owl:DatatypeProperty rdf:about="https://www.soundpaint.org/ontologies/wow.owl#DictionaryEntryFormalParameter_hasId_id">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#DictionaryEntryFormalParameter"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>&lt;p&gt;
+This property is not manually managed, but automatically updated when creating or changing dictionary entries via the WOW i18n API.
+&lt;/p&gt;</rdfs:comment>
+        <rdfs:label>has formal parameter ID</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
     <!-- https://www.soundpaint.org/ontologies/wow.owl#DictionaryEntryTemplate_hasTemplateValue_value -->
 
     <owl:DatatypeProperty rdf:about="https://www.soundpaint.org/ontologies/wow.owl#DictionaryEntryTemplate_hasTemplateValue_value">
@@ -635,20 +659,6 @@ This property is not manually managed, but automatically updated when creating o
 TODO: Currently, only MD5 (&quot;md5&quot;) and &quot;plain&quot; are supported.  MD5 is no more conssidered as a secure hashing method,  Support for alternative hashing methods should be added.
 &lt;/p&gt;</rdfs:comment>
         <rdfs:label>uses hash algorithm</rdfs:label>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://www.soundpaint.org/ontologies/wow.owl#dictionaryEntryParameter_hasId_id -->
-
-    <owl:DatatypeProperty rdf:about="https://www.soundpaint.org/ontologies/wow.owl#dictionaryEntryParameter_hasId_id">
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="https://www.soundpaint.org/ontologies/wow.owl#DictionaryEntryFormalParameter"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-        <rdfs:comment>&lt;p&gt;
-This property is not manually managed, but automatically updated when creating or changing dictionary entries via the WOW i18n API.
-&lt;/p&gt;</rdfs:comment>
-        <rdfs:label>has formal parameter ID</rdfs:label>
     </owl:DatatypeProperty>
     
 
